@@ -2,7 +2,8 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use binary_filler_core::{
-    cover_preset, ingest_file, preset_toml, Budget, Corpus, FailPolicy, IngestOptions, PRESET_NAMES,
+    cover_preset, ingest_file, preset_toml, security_directory, stamp_certificate_file, Budget,
+    Corpus, FailPolicy, IngestOptions, PRESET_NAMES,
 };
 use clap::{Parser, Subcommand};
 use object::pe::{IMAGE_DIRECTORY_ENTRY_RESOURCE, IMAGE_SUBSYSTEM_WINDOWS_GUI};
@@ -87,6 +88,28 @@ enum Command {
         /// Require these import DLLs (comma-separated, lower-case).
         #[arg(long, default_value = "user32.dll,gdi32.dll")]
         require_imports: String,
+
+        /// Require a non-empty Authenticode security directory (may be invalid).
+        #[arg(long, default_value_t = false)]
+        require_cert: bool,
+    },
+
+    /// Copy a donor PE's Authenticode certificate table onto a target PE (post-link).
+    ///
+    /// The signature will **not** cryptographically verify — only the security
+    /// directory / WIN_CERTIFICATE blob is present for static heuristics.
+    StampCert {
+        /// Donor PE that already has an Authenticode table (e.g. corpus/bundled/putty-x64.exe).
+        #[arg(long, short = 'd')]
+        donor: PathBuf,
+
+        /// Target PE to stamp (typically your filled agent after cargo build).
+        #[arg(long, short = 't')]
+        target: PathBuf,
+
+        /// Output path (default: overwrite target).
+        #[arg(long, short = 'o')]
+        output: Option<PathBuf>,
     },
 }
 
@@ -156,7 +179,13 @@ fn main() -> ExitCode {
             product,
             require_gui,
             require_imports,
-        } => run_verify(pe, company, product, require_gui, require_imports),
+            require_cert,
+        } => run_verify(pe, company, product, require_gui, require_imports, require_cert),
+        Command::StampCert {
+            donor,
+            target,
+            output,
+        } => run_stamp_cert(donor, target, output),
     };
 
     match result {
@@ -244,12 +273,31 @@ fn run_corpus_list(corpus: PathBuf) -> Result<(), binary_filler_core::Error> {
     Ok(())
 }
 
+fn run_stamp_cert(
+    donor: PathBuf,
+    target: PathBuf,
+    output: Option<PathBuf>,
+) -> Result<(), binary_filler_core::Error> {
+    let out = output.unwrap_or_else(|| target.clone());
+    let report = stamp_certificate_file(&donor, &target, &out)?;
+    println!("stamped certificate (INVALID — hash will not verify)");
+    println!("  donor     {}", report.donor.display());
+    println!("  target    {}", report.target.display());
+    println!("  output    {}", report.output.display());
+    println!("  cert_bytes {}", report.certificate_bytes);
+    println!("  sec_offset {}", report.security_file_offset);
+    println!("  replaced  {}", report.had_existing_target_cert);
+    println!("RESULT=OK");
+    Ok(())
+}
+
 fn run_verify(
     pe: PathBuf,
     company: Option<String>,
     product: Option<String>,
     require_gui: bool,
     require_imports: String,
+    require_cert: bool,
 ) -> Result<(), binary_filler_core::Error> {
     let data = std::fs::read(&pe).map_err(|e| binary_filler_core::Error::io(&pe, e))?;
     if data.len() < 64 || &data[..2] != b"MZ" {
@@ -270,6 +318,9 @@ fn run_verify(
         .get(IMAGE_DIRECTORY_ENTRY_RESOURCE)
         .is_some_and(|d| d.virtual_address.get(LE) != 0);
 
+    let (sec_off, sec_size) = security_directory(&data)?;
+    let has_cert = sec_off != 0 && sec_size != 0;
+
     let sections: Vec<String> = file
         .sections()
         .filter_map(|s| s.name().ok().map(|n| n.to_string()))
@@ -288,6 +339,7 @@ fn run_verify(
     println!("  size       {}", data.len());
     println!("  subsystem  {subsystem} (2=GUI)");
     println!("  rsrc_dir   {has_rsrc}");
+    println!("  cert_dir   {has_cert} (off={sec_off} size={sec_size})");
     println!("  sections   {}", sections.join(","));
     println!("  imports    {}", imports.join(","));
 
@@ -302,6 +354,10 @@ fn run_verify(
     }
     if !sections.iter().any(|s| s.starts_with(".rsrc")) {
         eprintln!("FAIL: missing .rsrc section");
+        failed = true;
+    }
+    if require_cert && !has_cert {
+        eprintln!("FAIL: missing Authenticode security directory");
         failed = true;
     }
 

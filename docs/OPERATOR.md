@@ -121,6 +121,27 @@ cargo run -p binary-filler-cli -- verify \
   --product DrivePrep
 ```
 
+## Authenticode stamp (post-link, intentionally invalid)
+
+Compile-time fill cannot attach a cert: the PE must exist first. After `cargo build`:
+
+```bash
+cargo run -p binary-filler-cli -- stamp-cert \
+  -d corpus/bundled/putty-x64.exe \
+  -t target/x86_64-pc-windows-gnu/release/my-agent.exe
+```
+
+This **copies the WIN_CERTIFICATE / security directory** from a signed donor onto your
+agent. Windows will **not** accept it as a valid signature (image hash mismatch). It only
+adds the static artifact some heuristics look for (“has cert table”).
+
+Signed donors in the bundled corpus include: `putty-x64.exe`, `rufus-4.15.exe`,
+`notepadpp-x64.exe`, `SumatraPDF-3.6.1-64.exe`, …
+
+```bash
+cargo run -p binary-filler-cli -- verify -p my-agent.exe --require-cert
+```
+
 ## Smoketests
 
 ```bash

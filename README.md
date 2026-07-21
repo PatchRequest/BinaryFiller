@@ -102,6 +102,14 @@ cargo run -p binary-filler-cli -- ingest \
 cargo run -p binary-filler-cli -- verify \
   -p target/x86_64-pc-windows-gnu/release/dummy-agent.exe \
   --company "Northwind Softworks" --product DrivePrep
+
+# Post-link: copy Authenticode *table* from a signed goodware PE
+# (signature will NOT cryptographically verify — static presence only)
+cargo run -p binary-filler-cli -- stamp-cert \
+  -d corpus/bundled/putty-x64.exe \
+  -t target/x86_64-pc-windows-gnu/release/dummy-agent.exe
+
+cargo run -p binary-filler-cli -- verify -p target/x86_64-pc-windows-gnu/release/dummy-agent.exe --require-cert
 ```
 
 Refresh bundled goodware:
