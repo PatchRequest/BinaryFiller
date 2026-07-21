@@ -1,0 +1,17 @@
+[package]
+name = "binary-filler-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "CLI for corpus ingest and binary-filler ops helpers"
+publish = false
+
+[[bin]]
+name = "binary-filler"
+path = "src/main.rs"
+
+[dependencies]
+binary-filler-core = { workspace = true }
+clap = { workspace = true }
+object = { workspace = true }

@@ -1,0 +1,61 @@
+# Inventory of bundled goodware PE seeds (see THIRD_PARTY_NOTICES.md).
+
+[[binary]]
+file = "putty-x64.exe"
+id = "putty-x64"
+tags = ["gui", "network", "utility"]
+license = "MIT"
+
+[[binary]]
+file = "puttygen-x64.exe"
+id = "puttygen-x64"
+tags = ["gui", "utility", "crypto"]
+license = "MIT"
+
+[[binary]]
+file = "pageant-x64.exe"
+id = "pageant-x64"
+tags = ["gui", "network", "utility"]
+license = "MIT"
+
+[[binary]]
+file = "rufus-4.15.exe"
+id = "rufus-4.15"
+tags = ["gui", "utility", "usb"]
+license = "GPLv3"
+
+[[binary]]
+file = "busybox-w32.exe"
+id = "busybox-w32"
+tags = ["console", "utility"]
+license = "GPL-2.0"
+
+[[binary]]
+file = "7zr.exe"
+id = "7zr"
+tags = ["console", "utility"]
+license = "LGPL"
+
+[[binary]]
+file = "SumatraPDF-3.6.1-64.exe"
+id = "sumatrapdf-3.6.1"
+tags = ["gui", "utility", "document"]
+license = "GPLv3"
+
+[[binary]]
+file = "notepadpp-x64.exe"
+id = "notepadpp-x64"
+tags = ["gui", "editor", "utility"]
+license = "GPLv3"
+
+[[binary]]
+file = "jq-windows-amd64.exe"
+id = "jq-1.7.1"
+tags = ["console", "utility"]
+license = "MIT"
+
+[[binary]]
+file = "rg.exe"
+id = "ripgrep-14.1.1"
+tags = ["console", "utility"]
+license = "MIT/Apache-2.0"

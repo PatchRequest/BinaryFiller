@@ -1,0 +1,12 @@
+name = "usb-utility"
+company_name = "Northwind Softworks"
+product_name = "DrivePrep"
+file_description = "USB drive preparation utility"
+internal_name = "driveprep"
+original_filename = "driveprep.exe"
+legal_copyright = "Copyright (c) Northwind Softworks"
+file_version = [4, 15, 0, 0]
+product_version = [4, 15, 0, 0]
+subsystem = "gui"
+import_profile = "gui"
+tags = ["gui", "utility", "usb"]

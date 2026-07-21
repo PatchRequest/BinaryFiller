@@ -1,0 +1,14 @@
+# Cross-compile Windows PE from macOS/Linux using mingw-w64.
+#
+#   cargo build -p dummy-agent --target x86_64-pc-windows-gnu --release
+#
+# Requires: rustup target add x86_64-pc-windows-gnu
+#           x86_64-w64-mingw32-gcc (Homebrew: mingw-w64)
+
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+ar = "x86_64-w64-mingw32-ar"
+
+[target.i686-pc-windows-gnu]
+linker = "i686-w64-mingw32-gcc"
+ar = "i686-w64-mingw32-ar"

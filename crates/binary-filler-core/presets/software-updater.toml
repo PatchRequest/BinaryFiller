@@ -1,0 +1,12 @@
+name = "software-updater"
+company_name = "Northwind Softworks"
+product_name = "SoftUpdate"
+file_description = "Application update helper"
+internal_name = "softupdate"
+original_filename = "softupdate.exe"
+legal_copyright = "Copyright (c) Northwind Softworks"
+file_version = [2, 1, 0, 0]
+product_version = [2, 1, 0, 0]
+subsystem = "gui"
+import_profile = "desktop-app"
+tags = ["gui", "utility", "updater"]

@@ -1,0 +1,7 @@
+/target
+**/*.rs.bk
+.DS_Store
+Cargo.lock
+
+# Operator-local goodware only (not the redistributable bundled set)
+/corpus/sources/

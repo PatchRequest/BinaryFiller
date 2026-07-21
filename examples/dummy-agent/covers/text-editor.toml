@@ -1,0 +1,12 @@
+name = "text-editor"
+company_name = "Northwind Softworks"
+product_name = "PlainEdit"
+file_description = "Lightweight plain-text editor"
+internal_name = "plainedit"
+original_filename = "plainedit.exe"
+legal_copyright = "Copyright (c) Northwind Softworks"
+file_version = [1, 4, 2, 0]
+product_version = [1, 4, 2, 0]
+subsystem = "gui"
+import_profile = "gui"
+tags = ["gui", "editor"]

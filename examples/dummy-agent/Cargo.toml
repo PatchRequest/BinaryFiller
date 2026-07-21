@@ -1,0 +1,16 @@
+[package]
+name = "dummy-agent"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[[bin]]
+name = "dummy-agent"
+path = "src/main.rs"
+
+[dependencies]
+binary-filler = { workspace = true }
+
+[build-dependencies]
+binary-filler-build = { workspace = true }

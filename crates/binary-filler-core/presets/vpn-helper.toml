@@ -1,0 +1,12 @@
+name = "vpn-helper"
+company_name = "Northwind Softworks"
+product_name = "LinkShield Helper"
+file_description = "VPN connectivity helper"
+internal_name = "linkshield"
+original_filename = "linkshield.exe"
+legal_copyright = "Copyright (c) Northwind Softworks"
+file_version = [3, 0, 1, 0]
+product_version = [3, 0, 1, 0]
+subsystem = "gui"
+import_profile = "desktop-app"
+tags = ["gui", "utility", "network"]

@@ -1,0 +1,12 @@
+[package]
+name = "binary-filler"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Link-time goodware cover anchors for Windows PE red-team agents"
+publish = false
+
+[dependencies]
+# Runtime crate is intentionally dependency-free. All generation happens in build.rs
+# via binary-filler-build in the consumer.
