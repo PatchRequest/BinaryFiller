@@ -27,12 +27,24 @@ pub fn render_rc(cover: &CoverProfile, warnings: &mut Vec<String>) -> Result<Str
     }
 
     // Application manifest: asInvoker, common Win10+ compat.
-    out.push_str(r#"1 24
-BEGIN
-"<?xml version=""1.0"" encoding=""UTF-8"" standalone=""yes""?>\r\n"
-"<assembly xmlns=""urn:schemas-microsoft-com:asm.v1"" manifestVersion=""1.0"">\r\n"
-"  <assemblyIdentity version=""1.0.0.0"" name=""CoverApp"" type=""win32""/>\r\n"
-"  <trustInfo xmlns=""urn:schemas-microsoft-com:asm.v3"">\r\n"
+    // assemblyIdentity/@name is derived from the cover internal_name for consistency.
+    let assembly_name = sanitize_assembly_name(&cover.internal_name);
+    let assembly_version = format!(
+        "{}.{}.{}.{}",
+        cover.file_version[0], cover.file_version[1], cover.file_version[2], cover.file_version[3]
+    );
+    out.push_str("1 24\nBEGIN\n");
+    out.push_str(
+        "\"<?xml version=\"\"1.0\"\" encoding=\"\"UTF-8\"\" standalone=\"\"yes\"\"?>\\r\\n\"\n",
+    );
+    out.push_str(
+        "\"<assembly xmlns=\"\"urn:schemas-microsoft-com:asm.v1\"\" manifestVersion=\"\"1.0\"\">\\r\\n\"\n",
+    );
+    out.push_str(&format!(
+        "\"  <assemblyIdentity version=\"\"{assembly_version}\"\" name=\"\"{assembly_name}\"\" type=\"\"win32\"\"/>\\r\\n\"\n"
+    ));
+    out.push_str(
+        r#""  <trustInfo xmlns=""urn:schemas-microsoft-com:asm.v3"">\r\n"
 "    <security>\r\n"
 "      <requestedPrivileges>\r\n"
 "        <requestedExecutionLevel level=""asInvoker"" uiAccess=""false""/>\r\n"
@@ -51,11 +63,24 @@ BEGIN
 "</assembly>\r\n"
 END
 
-"#);
+"#,
+    );
 
     out.push_str("VS_VERSION_INFO VERSIONINFO\n");
-    out.push_str(&format!("FILEVERSION {a},{b},{c},{d}\n", a = cover.file_version[0], b = cover.file_version[1], c = cover.file_version[2], d = cover.file_version[3]));
-    out.push_str(&format!("PRODUCTVERSION {a},{b},{c},{d}\n", a = cover.product_version[0], b = cover.product_version[1], c = cover.product_version[2], d = cover.product_version[3]));
+    out.push_str(&format!(
+        "FILEVERSION {a},{b},{c},{d}\n",
+        a = cover.file_version[0],
+        b = cover.file_version[1],
+        c = cover.file_version[2],
+        d = cover.file_version[3]
+    ));
+    out.push_str(&format!(
+        "PRODUCTVERSION {a},{b},{c},{d}\n",
+        a = cover.product_version[0],
+        b = cover.product_version[1],
+        c = cover.product_version[2],
+        d = cover.product_version[3]
+    ));
     out.push_str("FILEFLAGSMASK 0x3fL\n");
     out.push_str("FILEFLAGS 0x0L\n");
     out.push_str("FILEOS 0x40004L\n");
@@ -103,4 +128,62 @@ fn escape_rc_path(path: &Path) -> String {
     // windres/rc accept forward slashes; escape backslashes for safety.
     let s = path.to_string_lossy().replace('\\', "/");
     escape_rc_string(&s)
+}
+
+/// Manifest assemblyIdentity name: alnum + `.` / `-` / `_` only.
+fn sanitize_assembly_name(name: &str) -> String {
+    let cleaned: String = name
+        .chars()
+        .map(|c| {
+            if c.is_ascii_alphanumeric() || c == '.' || c == '-' || c == '_' {
+                c
+            } else {
+                '_'
+            }
+        })
+        .collect();
+    if cleaned.is_empty() {
+        "CoverApp".into()
+    } else {
+        cleaned
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use binary_filler_core::{CoverProfile, ImportProfile, Subsystem};
+
+    fn sample_cover() -> CoverProfile {
+        CoverProfile {
+            name: "usb-utility".into(),
+            company_name: "Northwind Softworks".into(),
+            product_name: "DrivePrep".into(),
+            file_description: "USB".into(),
+            internal_name: "driveprep".into(),
+            original_filename: "driveprep.exe".into(),
+            legal_copyright: "c".into(),
+            file_version: [4, 15, 0, 0],
+            product_version: [4, 15, 0, 0],
+            subsystem: Subsystem::Gui,
+            import_profile: ImportProfile::Gui,
+            icon: None,
+            tags: vec![],
+        }
+    }
+
+    #[test]
+    fn manifest_uses_internal_name_and_version() {
+        let mut warnings = Vec::new();
+        let rc = render_rc(&sample_cover(), &mut warnings).unwrap();
+        assert!(rc.contains("name=\"\"driveprep\"\""));
+        assert!(rc.contains("version=\"\"4.15.0.0\"\""));
+        assert!(!rc.contains("CoverApp"));
+    }
+
+    #[test]
+    fn sanitize_assembly_name_strips_bad_chars() {
+        assert_eq!(sanitize_assembly_name("Drive Prep!"), "Drive_Prep_");
+        assert_eq!(sanitize_assembly_name(""), "CoverApp");
+    }
 }

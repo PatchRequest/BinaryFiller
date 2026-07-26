@@ -1,0 +1,1895 @@
+{
+  "version": 1,
+  "components": [
+    {
+      "id": "7zr",
+      "tags": [
+        "console",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/7zr/chunks/chunk_0000_e2.61.bin",
+          "byte_len": 1536,
+          "entropy": 2.609420335728351,
+          "sha256": "f1567cf7b222ad96413f06aa133de67e91917058e8fe4b3c0c48497008720f1f"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0001_e2.75.bin",
+          "byte_len": 4096,
+          "entropy": 2.7499181017659846,
+          "sha256": "58386d65f5f7c7c11b245099c6a25d197dada7a8680aa51e1812d3ed088cf0dc"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0002_e2.80.bin",
+          "byte_len": 4096,
+          "entropy": 2.7996827918254596,
+          "sha256": "63c5edf8f241983912cd09aa946a7acd0cc106cf21078608ca9860f4a4d7dd90"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0003_e2.94.bin",
+          "byte_len": 4096,
+          "entropy": 2.944521857756497,
+          "sha256": "bc0ec410b9a9c115888ef80cef131a0cbb5bf8d9169aeed24b8820d3e269738f"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0004_e3.02.bin",
+          "byte_len": 4096,
+          "entropy": 3.023079797079453,
+          "sha256": "6199d4ba114d905ef039306820cf93a46db788d922e62ff24cc44bb6e8a34c01"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0005_e3.03.bin",
+          "byte_len": 4096,
+          "entropy": 3.0284599617665298,
+          "sha256": "d4e71fa17e65c971cd76d898deb3524deb1d0a7e5ff60dc54647b95e90342aaa"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0006_e3.07.bin",
+          "byte_len": 4096,
+          "entropy": 3.0651053097120577,
+          "sha256": "b654b6ec726535f935f3fe7076bac19ae1eedd62328df3819ca7294f7d8404d4"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0007_e3.17.bin",
+          "byte_len": 4096,
+          "entropy": 3.174640402137355,
+          "sha256": "720671bfcfdb03ddd7c30ae12d48d30867ef0556d36794979afe417f52692de2"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0008_e3.19.bin",
+          "byte_len": 4096,
+          "entropy": 3.193863384679336,
+          "sha256": "69cd66709cabe6708426565bd338e71a66445dba48e15cdda9fb66e12f758a77"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0009_e4.18.bin",
+          "byte_len": 4096,
+          "entropy": 4.184053023825525,
+          "sha256": "e0e6ab0502d9dd4fb85c9bcaf932f5c7588e054f10f3ff22d70c9296ba20d103"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0010_e4.64.bin",
+          "byte_len": 4096,
+          "entropy": 4.635026545642214,
+          "sha256": "f7ecb7495d6eba37e1d9925daec4ca22d7344f1eeb3a330f7841d52edb9ca7a6"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0011_e5.02.bin",
+          "byte_len": 2000,
+          "entropy": 5.016662770537477,
+          "sha256": "c3d80f3374c96ef1c5f758d5de25bc47f7b1af17bf8281687bf667bd97428798"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0012_e5.10.bin",
+          "byte_len": 1748,
+          "entropy": 5.101492121896508,
+          "sha256": "44512d78bce47da94d59a2245b68f82886e1d45b02ba1b0238a524ec8a84a47b"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0013_e5.15.bin",
+          "byte_len": 4096,
+          "entropy": 5.149174389063874,
+          "sha256": "aecb36adfde96fdea84797de847d390b746183e30ddad2a61478a9cd8c11b2ad"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0014_e5.16.bin",
+          "byte_len": 4096,
+          "entropy": 5.158091430981077,
+          "sha256": "a79b77784e8fc5edc1bf90404f3d382afb697ccbb6f5f3a23c9140b856a915d3"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0015_e5.24.bin",
+          "byte_len": 4096,
+          "entropy": 5.243894876979286,
+          "sha256": "ebe7782c9b4714a8dbd09fe45ad9e83d2091ae4bc028f8caac90e8e044ab8e70"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0016_e5.36.bin",
+          "byte_len": 2053,
+          "entropy": 5.360666442450701,
+          "sha256": "165b3f11e7c2c76b6bffd6543825d5ca3059de1c16c372bc4c6837b297753f2b"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0017_e5.38.bin",
+          "byte_len": 4096,
+          "entropy": 5.376318570357718,
+          "sha256": "c71b8d432f822f701d579da32d5833c304b16327543ff6f53f59fac5685b542b"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0018_e5.48.bin",
+          "byte_len": 4096,
+          "entropy": 5.482280752778093,
+          "sha256": "c341e7f00a32d3cabf116e3ab091f541a4f50754dc70d61d42b689975a940f75"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0019_e5.49.bin",
+          "byte_len": 4096,
+          "entropy": 5.493844585576355,
+          "sha256": "41235985f784c079730b479d04052dc25ecf6982f41f2543d34e195038684cbc"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0020_e5.57.bin",
+          "byte_len": 4096,
+          "entropy": 5.5689562330207725,
+          "sha256": "56490901636e39dcb04fde976fbdf3100e2fa8af8c562927727766f638bc0fc4"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0021_e5.67.bin",
+          "byte_len": 4096,
+          "entropy": 5.667470836059113,
+          "sha256": "8facbe958d9056b951012fe48308facc48f9cc55ef5875fd9c7edc97db6235fc"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0022_e5.67.bin",
+          "byte_len": 4096,
+          "entropy": 5.670149734402809,
+          "sha256": "cdf73f1e23ec374dc54b204085adaca5a8637cfc9726a4d52f231dbf52296f3a"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0023_e5.67.bin",
+          "byte_len": 4096,
+          "entropy": 5.672069054063664,
+          "sha256": "ef78d308a9b1fef5af437a802e7d434a9f63a68026c64a87434745223b30ad08"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0024_e5.70.bin",
+          "byte_len": 4096,
+          "entropy": 5.701744944800766,
+          "sha256": "c79815b8d95eb1ca03a493ce0befdc9458bc2bf405f8661f880f94458776d5c0"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0025_e5.73.bin",
+          "byte_len": 4096,
+          "entropy": 5.726068665961305,
+          "sha256": "2660826d1967ba1ebc3df467c41a437fd55c6413fd045b86e20035865b842936"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0026_e5.73.bin",
+          "byte_len": 4096,
+          "entropy": 5.72837271617172,
+          "sha256": "e0ef8fa5d8eda3a23cd468c3c05733497440dfae29558d880380ae5d9773dbb7"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0027_e5.77.bin",
+          "byte_len": 4096,
+          "entropy": 5.774395115277322,
+          "sha256": "14e2157168f52f7bdc44a13e0efff55f2513bd842252e0bbcb53c1acc0e6e07c"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0028_e5.88.bin",
+          "byte_len": 4096,
+          "entropy": 5.876891909938642,
+          "sha256": "38bc2fb76f16a5fb2ddddfe8a9f3a69f805e2bf52c32f1676b5fc0840c170800"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0029_e5.95.bin",
+          "byte_len": 4096,
+          "entropy": 5.945411417250679,
+          "sha256": "2f09c17f58d3a3f8e3c202f1a08960cdfd3a6eafe4aecc700faa127e930d9083"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0030_e5.96.bin",
+          "byte_len": 4096,
+          "entropy": 5.961129464725271,
+          "sha256": "69c12bd84ed553c58a66096a901237944d89e7d876b3c851d54bebcd0d789a0c"
+        },
+        {
+          "relative_path": "components/7zr/chunks/chunk_0031_e5.96.bin",
+          "byte_len": 4096,
+          "entropy": 5.96234281710079,
+          "sha256": "bd39cfcac80149ec622f0e9f9381dc88690834ee2535a82e4314ea4f68af9179"
+        }
+      ]
+    },
+    {
+      "id": "busybox-w32",
+      "tags": [
+        "console",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0000_e2.58.bin",
+          "byte_len": 904,
+          "entropy": 2.5763189279102905,
+          "sha256": "49e3e41dd295f03195238aaad702d79215fb4a3650560779564fd7568321dae0"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0001_e2.72.bin",
+          "byte_len": 460,
+          "entropy": 2.7199144783270253,
+          "sha256": "dab60273602f76930bb4ff4cf1729e0cf159d4bbb5856024a947f7de3eab7249"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0002_e3.38.bin",
+          "byte_len": 3608,
+          "entropy": 3.380013161938568,
+          "sha256": "a6344084ad219ff694a060a35dab290f43d17d9afedbb711c2deea7b6785199d"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0003_e4.04.bin",
+          "byte_len": 4096,
+          "entropy": 4.042210268844935,
+          "sha256": "bc8c1e45b724ef2c5d371af6fdd7c466a40af76697850c966fbae6691cf38fcd"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0004_e4.08.bin",
+          "byte_len": 4096,
+          "entropy": 4.077269916786244,
+          "sha256": "07b5d867dd2f4aaff335139ec7817f21c3d07eae2517dae6c9e500fbfaf2a1fe"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0005_e4.71.bin",
+          "byte_len": 4096,
+          "entropy": 4.7089494764632525,
+          "sha256": "423a21daef94d1c3dfdf7679c07f2bea680e6447cf0cc0128fff5337fcac16a1"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0006_e4.76.bin",
+          "byte_len": 2856,
+          "entropy": 4.757188845434635,
+          "sha256": "4d524ca2ade9cfc4d614a9448e0b186b183b22753871e35e74284524ae1a2e99"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0007_e4.88.bin",
+          "byte_len": 4096,
+          "entropy": 4.884483972600202,
+          "sha256": "af580ef221785752137950a23609021f0955bc54820fb72339e95cd789b3a59d"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0008_e5.05.bin",
+          "byte_len": 4096,
+          "entropy": 5.053225055876223,
+          "sha256": "60285b8acfe0d2af6433d03b4dd40fb7e71feaa89ab0dc288a350922eaaf7746"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0009_e5.11.bin",
+          "byte_len": 900,
+          "entropy": 5.1131798975789655,
+          "sha256": "295088f48a878414d2f043c5553b2f3aaa998e7fc172a9b9e1fb7e6790211876"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0010_e5.25.bin",
+          "byte_len": 4096,
+          "entropy": 5.246376032514333,
+          "sha256": "1443c595709cf591e0804dbcfef6a9da43325c9bdc664d3ee6b106c83f32eacc"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0011_e5.30.bin",
+          "byte_len": 4096,
+          "entropy": 5.300599198855951,
+          "sha256": "4dc804409a5e0da5f264c719b8e0a7f0ea46f1ab39ec7b6a6f8eee74af506bd8"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0012_e5.47.bin",
+          "byte_len": 4096,
+          "entropy": 5.4744373905935815,
+          "sha256": "19184d9392e375c9655db5f35f96d73f11ba37aa7d52e98a0f212b6ac1bc0de7"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0013_e5.49.bin",
+          "byte_len": 4096,
+          "entropy": 5.486669424460659,
+          "sha256": "d8f97da996ad481b1a0b705b6aa4217d37adecc6f2b6f659f0bbe1d5952a0bf6"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0014_e5.49.bin",
+          "byte_len": 4096,
+          "entropy": 5.488328720066493,
+          "sha256": "5f3524588b67f2bd610be4db2262a32a8edfccf2eb301dec45c8648b4005c6cf"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0015_e5.53.bin",
+          "byte_len": 4096,
+          "entropy": 5.529674458899025,
+          "sha256": "9574c450dfa513c8270b8af7729187bce9e6727dec6679e4348480419422a004"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0016_e5.60.bin",
+          "byte_len": 4096,
+          "entropy": 5.595581081543875,
+          "sha256": "0dc3999c0b7f32c3f4ceb824d7bcfe2d76db7d99a437a218978793e2f4b6d1f9"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0017_e5.63.bin",
+          "byte_len": 4096,
+          "entropy": 5.63415798832189,
+          "sha256": "688bb9679178685089d3fd488f7707220e65fb07f13e7b86e84456d10cb46eda"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0018_e5.67.bin",
+          "byte_len": 4096,
+          "entropy": 5.674911642728398,
+          "sha256": "404fbe857369cdf764dc03d24b3d93c27be9ee0ed7d71bb20f676bbf67c57d59"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0019_e5.68.bin",
+          "byte_len": 4096,
+          "entropy": 5.677709973825904,
+          "sha256": "98a13bcae0b2f904e9b250fca14e9b7525fd93aac01deea0a692399c7efedbcd"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0020_e5.70.bin",
+          "byte_len": 4096,
+          "entropy": 5.696412691011041,
+          "sha256": "7318bd77223861ca36cb17ee87202fb49feb59f96090a2fbb1e7b01b97481520"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0021_e5.74.bin",
+          "byte_len": 4096,
+          "entropy": 5.740802690788983,
+          "sha256": "5c77db56b18eba40c05504a45aa6b3e03520215c023c2e79d80f337fbf0fa0af"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0022_e5.74.bin",
+          "byte_len": 4096,
+          "entropy": 5.742674696328848,
+          "sha256": "9f158e7e22c3ed75048a91a4e528fc1c9c9690d357ecb029a50a70fb96296760"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0023_e5.77.bin",
+          "byte_len": 4096,
+          "entropy": 5.767508643546984,
+          "sha256": "b95b4fc34a93ee0fad2550d7b8629e7bf843cbb7e9e06737d1b7367ad437be9c"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0024_e5.83.bin",
+          "byte_len": 4096,
+          "entropy": 5.82788470822516,
+          "sha256": "52a46c7eb36b39b14906875649e66d0400d9db3b2a2f292807378d9bf453c7d7"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0025_e5.84.bin",
+          "byte_len": 4096,
+          "entropy": 5.844266428553118,
+          "sha256": "5422fde3d883b64221ec5f634398d00394a79f2dc578a0c1921ca4ccf7b2a041"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0026_e5.88.bin",
+          "byte_len": 4096,
+          "entropy": 5.87782774600825,
+          "sha256": "213f744e6aaeaef5eb32704351860ad4599036f1464fbc634708b5df6871f90f"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0027_e5.90.bin",
+          "byte_len": 3172,
+          "entropy": 5.896986660878482,
+          "sha256": "de16562c856ec1ee7396f03cb24318652c1b2d2375a73f8684abb4f275c99f14"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0028_e5.92.bin",
+          "byte_len": 4096,
+          "entropy": 5.919206324379651,
+          "sha256": "443974e6872b7f0661fc597ae7c5b875d5f8474e22e2e8db2a5261f6018cd2df"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0029_e5.96.bin",
+          "byte_len": 4096,
+          "entropy": 5.963748495101906,
+          "sha256": "4f65a27e046316dc8582e11d728cdb5d0e230c9a7eadfa23144b2c98cbe306f0"
+        },
+        {
+          "relative_path": "components/busybox-w32/chunks/chunk_0030_e5.98.bin",
+          "byte_len": 4096,
+          "entropy": 5.977496583338139,
+          "sha256": "8c6ca4a1c167bca8260f317f5135878bfd8349f69171db449a01bb31b3d1508c"
+        }
+      ]
+    },
+    {
+      "id": "jq-1.7.1",
+      "tags": [
+        "console",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0000_e1.91.bin",
+          "byte_len": 4096,
+          "entropy": 1.9108309267276558,
+          "sha256": "c41e48f428e789c9159b7f5f3084325cbd553d2463305a1d975f411444fd5230"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0001_e2.33.bin",
+          "byte_len": 4096,
+          "entropy": 2.3290720580743276,
+          "sha256": "7beaf320bbd7b7526d856665612b54b03228ecfe3d18e42ff0a84142c54a102a"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0002_e2.62.bin",
+          "byte_len": 448,
+          "entropy": 2.622549333142657,
+          "sha256": "81e6a726ce6a3da7df15a57520babcd7bff9e6b446b61a720b6f7b9877665001"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0003_e2.69.bin",
+          "byte_len": 4096,
+          "entropy": 2.6918396663757456,
+          "sha256": "d221937829b63dca5b4e17544180de8461bc822a3d571b4e70515f0df0dc3361"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0004_e3.00.bin",
+          "byte_len": 4096,
+          "entropy": 2.997594366004479,
+          "sha256": "6ac066f312f07092e67fa77d73207dd3bcb6dda30affd3ecf432edd695712365"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0005_e3.00.bin",
+          "byte_len": 4096,
+          "entropy": 3.0027568509103695,
+          "sha256": "07b4e25aeb8340d8760e21d114a155c0be3a89144b2f347903255095f5cf9708"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0006_e3.01.bin",
+          "byte_len": 4096,
+          "entropy": 3.0106381027555633,
+          "sha256": "2578237fbbc44542bf79f1e0796ba8ebc8d2048c4435af125679b3bd46a8abe5"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0007_e3.11.bin",
+          "byte_len": 4096,
+          "entropy": 3.1069381102855917,
+          "sha256": "bc83008aa39cf87ee984b97dc260bb565d1736c6fea001675b9afaf5304594f7"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0008_e3.15.bin",
+          "byte_len": 4096,
+          "entropy": 3.154236049342882,
+          "sha256": "a998c27e4352cd69db621450615ab49b6576fd822c0f27342370030118dd74d6"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0009_e3.18.bin",
+          "byte_len": 4096,
+          "entropy": 3.1751872333860374,
+          "sha256": "da9a46a36b5dee2be905099b48cd005a614bc866a02873bbdbe46cc6414aed93"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0010_e3.33.bin",
+          "byte_len": 4096,
+          "entropy": 3.3276276538859317,
+          "sha256": "7d75cec3cad3762eb7a1c16d1fe6f0ae8ddf684a071f64cc7b0a63bd65d8f2ad"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0011_e3.34.bin",
+          "byte_len": 4096,
+          "entropy": 3.337311119174071,
+          "sha256": "f64c7cf1e94d2e81c0fdb7cbb6d338ada53e34622ce13934e27f97b23f75e14d"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0012_e3.47.bin",
+          "byte_len": 4096,
+          "entropy": 3.470720368924845,
+          "sha256": "a51ddc5186683691fc835065340587b727a26bf58c79ead9c172dc12af96be8d"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0013_e3.54.bin",
+          "byte_len": 4096,
+          "entropy": 3.5384219767715126,
+          "sha256": "7906e3c8872651c16bfdcd3ad7bf584e12be9f91753c238995886b0f87590c5b"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0014_e3.57.bin",
+          "byte_len": 4096,
+          "entropy": 3.5663285345755797,
+          "sha256": "510650dec34c1a20e01aab6d9638e6bc1cc34ba260f9fe3826fe20c9c5e37eba"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0015_e3.57.bin",
+          "byte_len": 4096,
+          "entropy": 3.571069149536618,
+          "sha256": "93d7f907766e5576893a86a465c5b2143f884ec109171fed0fa2639784b22ad2"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0016_e3.58.bin",
+          "byte_len": 4096,
+          "entropy": 3.5794185402269223,
+          "sha256": "dfceade432c6a89498e4481854c4ec9d06689d4b541612539dd1e25a5b1a702e"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0017_e3.59.bin",
+          "byte_len": 4096,
+          "entropy": 3.591239681781441,
+          "sha256": "19a1f838d1172cd9778e067117a5c367d390dbcb67c207160fcb281f74839d21"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0018_e3.61.bin",
+          "byte_len": 4096,
+          "entropy": 3.6099966283908373,
+          "sha256": "a7c91223200cfb5942f15d1aab59224fd698ec2571308fbcd562b111013b8446"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0019_e3.67.bin",
+          "byte_len": 4096,
+          "entropy": 3.6678083419302805,
+          "sha256": "5932e91b0e1161f604bb0a3e5c690c15270c625b04a88205200a0b140e01e862"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0020_e3.68.bin",
+          "byte_len": 4096,
+          "entropy": 3.6762007780541204,
+          "sha256": "f034d0b8b7297c04efee4cd2dbadce11abba77ebf41c33a80bad88eefdf401d9"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0021_e3.77.bin",
+          "byte_len": 4096,
+          "entropy": 3.7739612815339663,
+          "sha256": "d41033b52722cf14e17fc7011632290f844697578a0582b97b008af80b69df5d"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0022_e3.87.bin",
+          "byte_len": 4096,
+          "entropy": 3.873518427429569,
+          "sha256": "8c011c13e29758e89e618d4bc171266487d658460d88d873d9426eb8af5096ef"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0023_e3.92.bin",
+          "byte_len": 4096,
+          "entropy": 3.9199286259791757,
+          "sha256": "8ab394fa4b4eae7c5821395040328286a62b4c7271c81baa70c46c4a5c50d024"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0024_e4.00.bin",
+          "byte_len": 4096,
+          "entropy": 3.996036617109555,
+          "sha256": "f9d196491ff174e607a7b0bd1ef563f7491a540800f264b333a1d129b1f77db0"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0025_e4.06.bin",
+          "byte_len": 4096,
+          "entropy": 4.062517389240339,
+          "sha256": "5629119c720d89f7d143f6abb7ae9ecf5d1bde2d3d133ca539bb884d6fa8371c"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0026_e4.07.bin",
+          "byte_len": 4096,
+          "entropy": 4.068595182144563,
+          "sha256": "e783427fdfa89ecac8a4a91d81ff56ae41e1846cd091949dc9125709cda101b4"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0027_e4.11.bin",
+          "byte_len": 4096,
+          "entropy": 4.11030384089667,
+          "sha256": "1fb73982d494389aab583f0079d9f524e45f2ed675062cf7eda39d09fd5bb366"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0028_e4.13.bin",
+          "byte_len": 4096,
+          "entropy": 4.126790657720453,
+          "sha256": "cccce735b772dd2fbb3faaf5ef1981a9d0e3b5757c59afd6abc5e5da28ca0f49"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0029_e4.13.bin",
+          "byte_len": 4096,
+          "entropy": 4.134582257274733,
+          "sha256": "fee4d898b1023fc6849b4db792cf4e8cfa262b086b2f6146e6f0397662707981"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0030_e4.14.bin",
+          "byte_len": 4096,
+          "entropy": 4.140638535126333,
+          "sha256": "5b2b58dbc999c11fefb6a8762f178308df54d08c96c08fbb6a29bc8cd2663b54"
+        },
+        {
+          "relative_path": "components/jq-1.7.1/chunks/chunk_0031_e4.17.bin",
+          "byte_len": 4096,
+          "entropy": 4.165100418132585,
+          "sha256": "6e40179c225e25b3cda8d5a79b6e1069178a8716d28244126d9f7295884db4bd"
+        }
+      ]
+    },
+    {
+      "id": "notepadpp-x64",
+      "tags": [
+        "gui",
+        "editor",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0000_e1.54.bin",
+          "byte_len": 4096,
+          "entropy": 1.5394735174067242,
+          "sha256": "8048dcd99c65f4cc52cd1753c462a70943d22742a087918a9ec9085d0299fe97"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0001_e1.56.bin",
+          "byte_len": 4096,
+          "entropy": 1.5580576768158043,
+          "sha256": "b1618330889ad11ab844e1d8e56be0fb5f992ebe8eb4d2c6829bd25d643b1f40"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0002_e1.63.bin",
+          "byte_len": 4096,
+          "entropy": 1.6280582405217607,
+          "sha256": "099a9543b1b3e12bea23364167cef99f8e6f36926f94e58397124a3a6253d8b6"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0003_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6674381937789575,
+          "sha256": "358038e8993d5b51f9004ececdb5933ce6852a7e9417ef5ef80c674711c1b5be"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0004_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6741128352114973,
+          "sha256": "986f7e2838c85004d7f5553d14cd8200e0d8ab72af751ebd901dce2630f84ed6"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0005_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6741128352114973,
+          "sha256": "bdfa57a6a405354d67acc3ad8b381faefc1b79844620d445d757bdfe0a9af129"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0006_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6741128352114973,
+          "sha256": "c7429ce3725fc2e9c733a21cb9f5ba6fff8b65de4a4a82d797afb0008c631fd0"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0007_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6741128352114973,
+          "sha256": "ef60d39667affb924572cb6e24dc80d2ae578d1e0582a58afa684488b9ad40b7"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0008_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6744390224748296,
+          "sha256": "990ac2321cc171ec54627c865cd0b6c2074d5e87e2359e9855fac2079960e163"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0009_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6841225606775336,
+          "sha256": "1c37303397beeb7a3ccc0b0e7eb282d554b1f13f7d3c6f6076f03d0649515fad"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0010_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6841225606775336,
+          "sha256": "2b3617882d2765ea6a2555aa25dd2ce17d9abcd38b1b433bc1fbc7fde0f139f5"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0011_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6841225606775336,
+          "sha256": "450c89550c71abb4a72ce5ba487c36d2fe972aa4854c43568805018d5b40fa9a"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0012_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6843406935599026,
+          "sha256": "2519267e85d22bf33b9ae194b9030c98afe0af75f7b44507bc756d78ca20fa98"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0013_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6843406935599026,
+          "sha256": "875d6aa16857664c058a56dcc9d145c3df87b5fa79aa5862d3efcfa5a60e39d2"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0014_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6846624520943458,
+          "sha256": "51203f9c459ae32d82e7933a14b2d8f96bda9304c48033d4cb83be468ed4f7f3"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0015_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6848424606071801,
+          "sha256": "33df391bfd1b48d024b4f44a621fcc33f9d92bd4be4776275c8efbf1a491013c"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0016_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6848424606071801,
+          "sha256": "43508ab52cb4e3162b56746da0bb561b53b58c1e69087e67dbeec2710b385875"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0017_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6848424606071801,
+          "sha256": "cdb0c51ced7d4dff52a2ae27bc6e919193d6c864076bb5a0d983e904bd028bdf"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0018_e1.71.bin",
+          "byte_len": 4096,
+          "entropy": 1.7089136060676735,
+          "sha256": "aaa9c0ff21e5bb007ec8dfa54358b923fd5aecbc797d11aab41b3622fdc8a5e7"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0019_e2.02.bin",
+          "byte_len": 4096,
+          "entropy": 2.0160906253433337,
+          "sha256": "b7736f5ef657110643b703352b41cf69a095c00875b4d2912a7a0528971eac2b"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0020_e2.05.bin",
+          "byte_len": 4096,
+          "entropy": 2.047538301977731,
+          "sha256": "b286cbf4a644271357c357bcf6a6dbee87e84cfecd3be559090e3af52f06b8b3"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0021_e2.06.bin",
+          "byte_len": 4096,
+          "entropy": 2.056944330901159,
+          "sha256": "0016316a75231ed1e1ce93f1cf4ced2c41ce7b681f3c3a6bf0e1714826cc00dc"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0022_e2.06.bin",
+          "byte_len": 4096,
+          "entropy": 2.0620115290512144,
+          "sha256": "3ccfa496eff2c09c6309da281f592e4717f3b550dbe9f9306f526609c1e442bb"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0023_e2.08.bin",
+          "byte_len": 4096,
+          "entropy": 2.0752537230571577,
+          "sha256": "dcae85b5d7ea0409b568844bec213112908d9ce435107dac1c398193e9eb6e0a"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0024_e2.08.bin",
+          "byte_len": 4096,
+          "entropy": 2.076293360927584,
+          "sha256": "86a16de0b47cbd18100b800ef7fe42ea99c81bf6f88626b51e098c4d4d06cbac"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0025_e2.10.bin",
+          "byte_len": 4096,
+          "entropy": 2.1006935686386043,
+          "sha256": "b4c7c15c71291741e9fecd7f85ff03636107e46baea72953d297fb4174f1505f"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0026_e2.10.bin",
+          "byte_len": 4096,
+          "entropy": 2.1047752483831244,
+          "sha256": "8745aca4984ca03eb190c38af8af8d52af369e55bf250b860dbe05c1274f7cbf"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0027_e2.11.bin",
+          "byte_len": 4096,
+          "entropy": 2.107895290014267,
+          "sha256": "cee739b06d464f3622d72829c069493f342039d30bc4a638ba54728776cc03d3"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0028_e2.12.bin",
+          "byte_len": 4096,
+          "entropy": 2.122449157397147,
+          "sha256": "8315176038a24936e9aa9e3e239e88eb9a341b720e91568018074cee8345ea20"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0029_e2.12.bin",
+          "byte_len": 4096,
+          "entropy": 2.1229983468830524,
+          "sha256": "bc55eb940d3b45fdbc4e7144b97450e037d700cf376b2dda233d3127d1d8e33f"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0030_e2.14.bin",
+          "byte_len": 4096,
+          "entropy": 2.1442058983607213,
+          "sha256": "b75cbae3f272df541bc33258247e48c7e42bb5e06ac6fe32888f47e423361355"
+        },
+        {
+          "relative_path": "components/notepadpp-x64/chunks/chunk_0031_e2.15.bin",
+          "byte_len": 4096,
+          "entropy": 2.152047457550028,
+          "sha256": "259e444ce5cb3e32ebf2ee55aa40f59b03dabed0f07253f3387c781de88db710"
+        }
+      ]
+    },
+    {
+      "id": "pageant-x64",
+      "tags": [
+        "gui",
+        "network",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0000_e1.71.bin",
+          "byte_len": 4096,
+          "entropy": 1.7051901880803964,
+          "sha256": "a1675aeec7a79b2070a4b14368e4e123771fb9e632ef2dfb0f516a61a0f53dc9"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0001_e2.06.bin",
+          "byte_len": 3584,
+          "entropy": 2.0632042004696,
+          "sha256": "131f4f79c2eb218e7e7d48129970866ef6c61a67976392cc6c400626647a4907"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0002_e2.53.bin",
+          "byte_len": 4096,
+          "entropy": 2.533913910948921,
+          "sha256": "6a6825beb6ec0de443a89477c9f8b9b0d19391798c8ad394b5ae8d137d9a6ad7"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0003_e2.92.bin",
+          "byte_len": 4096,
+          "entropy": 2.917258242504097,
+          "sha256": "fa0a7509c62a8f77541b22f3c2cd82af73d1b4a0ea4a7c3d91cc5e867b082908"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0004_e3.10.bin",
+          "byte_len": 4096,
+          "entropy": 3.100707806165867,
+          "sha256": "c02aaf6af8eb83bc3aec5e5ef25d2b0267656928b8b5f76a92d981bd52e68dae"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0005_e3.22.bin",
+          "byte_len": 4096,
+          "entropy": 3.217618827043933,
+          "sha256": "32434e68f53a80622c8802d56250f0377c5884cddb4026333645edbff3173ac6"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0006_e3.24.bin",
+          "byte_len": 4096,
+          "entropy": 3.235375811352213,
+          "sha256": "f40adfdec325a562eb1c15eafc72a8ee11e12368640f0067f6d175cf33453785"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0007_e3.31.bin",
+          "byte_len": 4096,
+          "entropy": 3.3108892417784728,
+          "sha256": "ec8347dd0a60eaa7dfa4c45ca1bd94a50cb46c0c5ef4f9e6c38f4998cffe03d1"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0008_e3.34.bin",
+          "byte_len": 4096,
+          "entropy": 3.336682020082986,
+          "sha256": "44cb5e8bc04909c2a407fa90628e1cea12eb8a96d4746c14bf78a8502b0f442a"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0009_e3.41.bin",
+          "byte_len": 4096,
+          "entropy": 3.4131872118502233,
+          "sha256": "ee2231d04252b6de0d0823ea38bb1aac3b64c2b3e25831dc6b033652aecec360"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0010_e3.42.bin",
+          "byte_len": 4096,
+          "entropy": 3.4159097310319555,
+          "sha256": "026645432b718a2d20556fb3a57d0c367932647e086c0150a408836bf6a937f1"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0011_e3.48.bin",
+          "byte_len": 4096,
+          "entropy": 3.484569355077996,
+          "sha256": "94feaedc48e66e8937e16f3e1ca12bca9f79ceab6b3f8b8848bd444745ca1801"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0012_e3.65.bin",
+          "byte_len": 4096,
+          "entropy": 3.6473954994638538,
+          "sha256": "bae3af5461590cf66017d258268a6f88e7b15e0c9c5e582e68b2febaac74c800"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0013_e3.78.bin",
+          "byte_len": 4096,
+          "entropy": 3.780848471397945,
+          "sha256": "6360e0036ae2fe30301af41c5469f36c8466e78df1ed85416ab1e333cd645fd3"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0014_e4.02.bin",
+          "byte_len": 4096,
+          "entropy": 4.02059946565644,
+          "sha256": "b0003c78280a48c5feb4b56beb7b03a85fb539b22f541bdd8ca89ba216b7d3a6"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0015_e4.03.bin",
+          "byte_len": 4096,
+          "entropy": 4.031839694293282,
+          "sha256": "fabfcd6f595be939515409f7ede339fc130f00b19831456be9cdc9da336300c4"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0016_e4.16.bin",
+          "byte_len": 4096,
+          "entropy": 4.156281891014633,
+          "sha256": "54bfdb10fdfb0f1cc4c3fc72ec7382495029f53b1f37106e80a78b113df7d624"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0017_e4.31.bin",
+          "byte_len": 348,
+          "entropy": 4.307903807864086,
+          "sha256": "129926a1a9f39fca151289fddbac41cc1874d40b84fb96fa7e91118c2ef96f2e"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0018_e4.39.bin",
+          "byte_len": 4096,
+          "entropy": 4.391889487951534,
+          "sha256": "7f4206fa1a3eb8a96a0bb16bc5b719ff43e27c541e1725e65f1af6addd8314e4"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0019_e4.47.bin",
+          "byte_len": 288,
+          "entropy": 4.469784033574828,
+          "sha256": "14a4080953ba0be2aa122dbc5dffb6947f90fa9a63b003a80d0a60d18424b6a5"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0020_e4.47.bin",
+          "byte_len": 4096,
+          "entropy": 4.471740476721361,
+          "sha256": "889e5797b3a637cd854411daaee947af031858f384dccd65c9260bd1ed69fad0"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0021_e4.57.bin",
+          "byte_len": 4096,
+          "entropy": 4.5747010615318855,
+          "sha256": "6cbcd186700ec8225a16466c42d3123b6ae9c18202db9b77a481bc52bdf423a8"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0022_e4.58.bin",
+          "byte_len": 4096,
+          "entropy": 4.582758383826224,
+          "sha256": "440c2914bd9bf99f269e5469ccda5321781c09a79dcadba5987749e5111fc860"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0023_e4.76.bin",
+          "byte_len": 4096,
+          "entropy": 4.7561023766569726,
+          "sha256": "07ce0670abe07e33b92793d101b10196b20a47ed4d6a6f25387c6dc0fb6f7746"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0024_e4.93.bin",
+          "byte_len": 1560,
+          "entropy": 4.932405464535527,
+          "sha256": "32144c2a7ab164b71c237fb430b6cd16f7e2c0dec9e86d5c64503d1bd01c3755"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0025_e4.94.bin",
+          "byte_len": 4096,
+          "entropy": 4.938973087504224,
+          "sha256": "9f329658f46359582336169aea5bf6412449c9d606734bf45c28b90eb4c9c64e"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0026_e4.95.bin",
+          "byte_len": 4096,
+          "entropy": 4.948168151886565,
+          "sha256": "dd8585256d8a5cc7203bba3ea2c470caa8404ef4990cc66147039e55b3b1ce35"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0027_e5.10.bin",
+          "byte_len": 4096,
+          "entropy": 5.096105195093944,
+          "sha256": "620a465ff6fcdbd0d0f5b832b7fcaa7eb844b04446554e8404971d63443ecf1c"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0028_e5.10.bin",
+          "byte_len": 4096,
+          "entropy": 5.10166558073847,
+          "sha256": "e262fff46a858b3f1d774a77fe6263f2f00551da744f774793f2c88fb5cf4943"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0029_e5.14.bin",
+          "byte_len": 4096,
+          "entropy": 5.135120258553043,
+          "sha256": "810d04a93ef38b230c5a29c0b0751cab30a777391bf733e42c3443f958e20999"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0030_e5.19.bin",
+          "byte_len": 1872,
+          "entropy": 5.189575922779394,
+          "sha256": "4da093241ce42759edd64ce0334a55518369f6bb6a06fedd00bbc3b6200585d2"
+        },
+        {
+          "relative_path": "components/pageant-x64/chunks/chunk_0031_e5.22.bin",
+          "byte_len": 4096,
+          "entropy": 5.215627977354979,
+          "sha256": "8b3729751ac8ad32cece324fca1b544eedfc77dcb5519cb34c056d38481f392f"
+        }
+      ]
+    },
+    {
+      "id": "putty-x64",
+      "tags": [
+        "gui",
+        "network",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0000_e2.08.bin",
+          "byte_len": 4096,
+          "entropy": 2.0780034661083207,
+          "sha256": "9943c2451fcd205449953a7c53cf1e8f5cefa3cdbdd606ee4171db2d35990e8d"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0001_e2.66.bin",
+          "byte_len": 4096,
+          "entropy": 2.6558729901106424,
+          "sha256": "715ccd007ac470a993537c03c1ae30018540d5d8ebdf867ef031310bda3812ec"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0002_e2.71.bin",
+          "byte_len": 4096,
+          "entropy": 2.710482686534794,
+          "sha256": "486f8810be38bbe7bf5c38b003f1618ed11dcca2fdd6e9dfd5af307898f4d4b5"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0003_e2.85.bin",
+          "byte_len": 4096,
+          "entropy": 2.8527248076023604,
+          "sha256": "837d620677ab29a53f656fb8e08e03205487fdd29a74735a9fbbcec1de65ac3a"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0004_e2.88.bin",
+          "byte_len": 4096,
+          "entropy": 2.8795370766288966,
+          "sha256": "35a5be3ec6bb14c13de62bbaac939f56a83a537f421eb6fb795f9a0b0650db5b"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0005_e2.94.bin",
+          "byte_len": 4096,
+          "entropy": 2.944194868326241,
+          "sha256": "adfcf23016597a464c435d71c78d44b8bb846c56138decbcebfebfd662c59705"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0006_e2.97.bin",
+          "byte_len": 4096,
+          "entropy": 2.969137735679333,
+          "sha256": "e02a5a28fdcdc8e3188446076061722de4ffe6984348751b173027c79f92547b"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0007_e3.10.bin",
+          "byte_len": 4096,
+          "entropy": 3.1023931593928085,
+          "sha256": "369c541f536a48290b481379a8fd351901dac6a8b93d9ea0ccb0e294c5880d31"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0008_e3.21.bin",
+          "byte_len": 4096,
+          "entropy": 3.211659032977932,
+          "sha256": "d3a85c7eb5ffcbf3b12caffeefd9d2691e5ee151c3e5dc12a96e8b8175e0b8a6"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0009_e3.21.bin",
+          "byte_len": 4096,
+          "entropy": 3.214691604317971,
+          "sha256": "20a5c9b73d46c0506120a00c723cc7b5063932fda0e6f0c5db3c2d53b8a0c6f3"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0010_e3.22.bin",
+          "byte_len": 4096,
+          "entropy": 3.224946601371731,
+          "sha256": "fa8eed2062205d2a909019c2428304e46bd6520cde19cc99e320b975d075fb9c"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0011_e3.24.bin",
+          "byte_len": 4096,
+          "entropy": 3.2428580691549223,
+          "sha256": "74ee5039b364641786a8224479207c842635fc3b7de140f55050843a5d68c78a"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0012_e3.24.bin",
+          "byte_len": 4096,
+          "entropy": 3.2433441148548376,
+          "sha256": "7825633720481e55ead6794ff5c9accb55ebbc9d2b995887ec0a97ac7a0dd6fa"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0013_e3.31.bin",
+          "byte_len": 4096,
+          "entropy": 3.3060123699602944,
+          "sha256": "abe6120e6925ea23ba82dfa37c6b0cdcb6022167aeeac4b3422be2d1fd06ab5c"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0014_e3.39.bin",
+          "byte_len": 4096,
+          "entropy": 3.391406796960888,
+          "sha256": "8e5c6ec48a14cc0efb2ddd127b65f71cc5452b5d3670b4129451cb8af87be84a"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0015_e3.41.bin",
+          "byte_len": 4096,
+          "entropy": 3.4057548991644477,
+          "sha256": "91d104410b62af16bd2fecc03d5b8e7b724c8fbdf53780672f4b3aa96b7839a8"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0016_e3.42.bin",
+          "byte_len": 4096,
+          "entropy": 3.418278312687474,
+          "sha256": "99061dbb854ef15f2f064d81dfe469fce4243d3361cb3c3b1faac2f7f240401a"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0017_e3.43.bin",
+          "byte_len": 4096,
+          "entropy": 3.4279767265275622,
+          "sha256": "c613d58a1052812da177014ebbd2686ae0130ad51882154628b10d2a7abad4c4"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0018_e3.43.bin",
+          "byte_len": 4096,
+          "entropy": 3.434776460642037,
+          "sha256": "7e64111fc0d73b6a52862d693e2571b09c191750a9dce1068c5260f4817800de"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0019_e3.47.bin",
+          "byte_len": 4096,
+          "entropy": 3.466865224547922,
+          "sha256": "6399e497b4d92f08263af31a626ef8bdf6cf4fa2cee07ce4f664374f7abfd647"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0020_e3.56.bin",
+          "byte_len": 4096,
+          "entropy": 3.5616157623864386,
+          "sha256": "28c85699f9eaaa4f176bb882d4130277991289ab67f6e983dd0a90b2fce2c927"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0021_e3.57.bin",
+          "byte_len": 4096,
+          "entropy": 3.565775062461034,
+          "sha256": "5265944800922bf4caa58d764dcf43e4570a5148dcee5de1c07f1c12d7bf6c7e"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0022_e3.59.bin",
+          "byte_len": 4096,
+          "entropy": 3.5856809662644413,
+          "sha256": "1330b976bd40d54b45bf8f6e0915059a220f38159a30cd5010a1e93f0c42fcb9"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0023_e3.61.bin",
+          "byte_len": 4096,
+          "entropy": 3.605224865598449,
+          "sha256": "c49c40984feee66102bf789285d1014d6eb80ad4aa2cb099473143760a813875"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0024_e3.66.bin",
+          "byte_len": 4096,
+          "entropy": 3.6577190223665683,
+          "sha256": "82a869b77546bae5560316b2c260aa0345a8b657b7ad54a697fa97a1e545d4f0"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0025_e3.70.bin",
+          "byte_len": 4096,
+          "entropy": 3.7021312749725213,
+          "sha256": "5ee0df9cd046f69eb7b36db1aea9f9c5d0cda3d4dd5a9acb3a73b5a5f07afb5c"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0026_e3.75.bin",
+          "byte_len": 4096,
+          "entropy": 3.74831242095777,
+          "sha256": "146e97afe691964c06203045f7f023c8a40b85cdb773d2b2e480906c3ae08a77"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0027_e3.83.bin",
+          "byte_len": 4096,
+          "entropy": 3.8347989275225847,
+          "sha256": "8441243f3d42c98b56cc1e309a6f7e24b455c9fabda8ed88ec972c7fbb62997b"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0028_e3.87.bin",
+          "byte_len": 4096,
+          "entropy": 3.8656610440570125,
+          "sha256": "fdbe30c4a111473e8b1ca6bb87829e3b81701659133f8bdb5785c7c35cbb3cbe"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0029_e3.87.bin",
+          "byte_len": 4096,
+          "entropy": 3.869727392337448,
+          "sha256": "9733bb782a2674ed9bf5359cfdaf4410181769923350152aea1af1c935dcc1ef"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0030_e3.87.bin",
+          "byte_len": 4096,
+          "entropy": 3.8737031519599556,
+          "sha256": "2d0c40559024b3596e9ebf69c555d725fddf12506e674333edeeb18a109d079c"
+        },
+        {
+          "relative_path": "components/putty-x64/chunks/chunk_0031_e3.95.bin",
+          "byte_len": 4096,
+          "entropy": 3.952573558629025,
+          "sha256": "8868214f28267ad3ae068c60d03a4df0ecd91d9534cf0995cce62fb1c0b48dd1"
+        }
+      ]
+    },
+    {
+      "id": "puttygen-x64",
+      "tags": [
+        "gui",
+        "utility",
+        "crypto"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0000_e2.01.bin",
+          "byte_len": 3584,
+          "entropy": 2.01472291741441,
+          "sha256": "d18bc4adafa63df7794bd39cd0fd09c60e5a15171538acea12397e0d867161ca"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0001_e2.53.bin",
+          "byte_len": 4096,
+          "entropy": 2.5253544030851507,
+          "sha256": "fa6cc598bfd5ae297527236bd49d1fc701cc2e41c9c0fca34237517a6322b851"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0002_e2.84.bin",
+          "byte_len": 4096,
+          "entropy": 2.843739545170341,
+          "sha256": "9e3f367d3e4c21e0a047dd4a2caa6dc2e877bf5a54dd211abc45cafba9a526a0"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0003_e2.95.bin",
+          "byte_len": 4096,
+          "entropy": 2.9489150597701204,
+          "sha256": "a2062a319c45922b13f70d29d3b5abe39c5eb1c24ba6033660f17b111d3c1ea8"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0004_e3.07.bin",
+          "byte_len": 4096,
+          "entropy": 3.070999296710781,
+          "sha256": "56f2664622d1e1f0be0574a74f08834f8d826ae9ee13d8d8bd78407ff0a02a3f"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0005_e3.23.bin",
+          "byte_len": 4096,
+          "entropy": 3.2326286487060405,
+          "sha256": "b1c6f874983c8ffd0d3ce67232a28201400f8663edf5b284ded5baf3b0ff0393"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0006_e3.25.bin",
+          "byte_len": 4096,
+          "entropy": 3.2453458611747217,
+          "sha256": "65be41ae79473cf71e4321537d41cc3b457ccb43856bcb952571ac3cc5c08001"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0007_e3.42.bin",
+          "byte_len": 4096,
+          "entropy": 3.4186009807829656,
+          "sha256": "7a7618ddce989207e2030927210881b040daddbd024bbd5920b7d6832a079102"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0008_e3.63.bin",
+          "byte_len": 4096,
+          "entropy": 3.625592427002313,
+          "sha256": "63e224bb963c49d4c28b39b26b38c7ae061e4654a173bc46bba28e164f6b3348"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0009_e3.64.bin",
+          "byte_len": 4096,
+          "entropy": 3.636270485726658,
+          "sha256": "25399f5ab31d08f88a5267cfbc96f90cc386ebf353d4cfa27b8aef73a6efa3a0"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0010_e3.66.bin",
+          "byte_len": 4096,
+          "entropy": 3.6619177301804973,
+          "sha256": "0a03eefb5d943a57f7b3df68ccd9f51815e4a6aafdbe890866f7d9ab0f3f5804"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0011_e3.84.bin",
+          "byte_len": 4096,
+          "entropy": 3.843997663195019,
+          "sha256": "0d708e98e5adda54c48009b28488ac60d9032e289714cbaf8aacb8a26bea395c"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0012_e3.87.bin",
+          "byte_len": 4096,
+          "entropy": 3.871107780558024,
+          "sha256": "4a621c2ef52c28079772d0f7a62cd6e0d427a9182b03b15e053493aea5c198bd"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0013_e3.89.bin",
+          "byte_len": 4096,
+          "entropy": 3.8879786938735483,
+          "sha256": "6a967517477093f0771cf76aa17f682e863f09103689db54503da48adda55d8f"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0014_e3.94.bin",
+          "byte_len": 4096,
+          "entropy": 3.935624788467668,
+          "sha256": "98951cd51e37c6ec09e55db5cc3c26f6ae41149540688eebb0efd49d4c2724b5"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0015_e3.94.bin",
+          "byte_len": 4096,
+          "entropy": 3.9427628243122896,
+          "sha256": "2cafacebb8513fe6a34e2b884f72cc8f8cf65d9fb62adfee1a5e85b959c3877d"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0016_e3.98.bin",
+          "byte_len": 4096,
+          "entropy": 3.981602343731532,
+          "sha256": "fc276eb67959814a2423907a8b24a4d8235571a3a8ac1d91213c3f7f525fc95f"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0017_e4.21.bin",
+          "byte_len": 348,
+          "entropy": 4.205606498224408,
+          "sha256": "6a1b1ccce691f79b3c15fc8548b21ebf7c42ec99e43d34b85aca4a1b84af9007"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0018_e4.57.bin",
+          "byte_len": 4096,
+          "entropy": 4.570605247208926,
+          "sha256": "2f49cb285532e24823a2deecbb8cc9b9b60b0ab03e60bd2d6e0b8a7c14239989"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0019_e4.81.bin",
+          "byte_len": 4096,
+          "entropy": 4.806759205158633,
+          "sha256": "92a2ebb814996f56ad189a79420b9ab6703648996595346c18252ca9bb6fecf8"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0020_e4.87.bin",
+          "byte_len": 1040,
+          "entropy": 4.872682304432509,
+          "sha256": "2e9bcfd3869db9c9e7f27a2d579f4118036bf4094ef4e746780e368fc8d516d3"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0021_e4.91.bin",
+          "byte_len": 4096,
+          "entropy": 4.911751045701719,
+          "sha256": "ce13182f0ca2ad9ae5c2137dc9a32c424aff1b0afb5709e49a3ce46976423f7b"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0022_e4.95.bin",
+          "byte_len": 1424,
+          "entropy": 4.948104278557488,
+          "sha256": "59f17ebadd7b010717b70a48043f499b0f3225201b0d792bd76434430ff3e4c8"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0023_e5.02.bin",
+          "byte_len": 4096,
+          "entropy": 5.0245119480627904,
+          "sha256": "8f52016cf8b0571f2ec0e8c4cd89769b20c687438d9cd8a96b4b4ac483083cb7"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0024_e5.09.bin",
+          "byte_len": 4096,
+          "entropy": 5.090983690466668,
+          "sha256": "378494061faec3448312cd9be6ad79e6ac0c6ab348b4cc59aa690adf53f65a4c"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0025_e5.10.bin",
+          "byte_len": 4096,
+          "entropy": 5.096001827928111,
+          "sha256": "ffa30a8278528ac3de04ceb6bd6ea28e639d4c22d71023e4ee8b58b89d9532cf"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0026_e5.12.bin",
+          "byte_len": 4096,
+          "entropy": 5.119336715008157,
+          "sha256": "37d7999421cc7703e0824c88745ee7319c84dc57c7b89a6a8326b5eb2ee5ea91"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0027_e5.15.bin",
+          "byte_len": 4096,
+          "entropy": 5.151731350713961,
+          "sha256": "61f73fd354ccaea2f8aea73663fac9de359f34c7c1dbf379f0b23165d75f6f1e"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0028_e5.19.bin",
+          "byte_len": 4096,
+          "entropy": 5.187125499081227,
+          "sha256": "79dbf5799ee002fedf8993787c42ad75da65a44ca42aab5bc1e6216d1643a774"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0029_e5.19.bin",
+          "byte_len": 2044,
+          "entropy": 5.188187831144642,
+          "sha256": "be44ab76f38a7679f0cbaa49ffd6595f9772cdbc95fe4b6b6c4211f38de2a726"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0030_e5.22.bin",
+          "byte_len": 4096,
+          "entropy": 5.216254017137022,
+          "sha256": "807f93deb2d177d3f44d3783b204aebc63d3ac53efc3a28b2e4de9122f7700c4"
+        },
+        {
+          "relative_path": "components/puttygen-x64/chunks/chunk_0031_e5.26.bin",
+          "byte_len": 4096,
+          "entropy": 5.255106440144061,
+          "sha256": "229ee8e41942a76b4d3185820861f61cf3f17017b2f4b638f85306bac77c4a8f"
+        }
+      ]
+    },
+    {
+      "id": "ripgrep-14.1.1",
+      "tags": [
+        "console",
+        "utility"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0000_e1.76.bin",
+          "byte_len": 4096,
+          "entropy": 1.7574407633135123,
+          "sha256": "9b89fb4f173a434a392ef7cb440bdeb1ee9c55c7fd574717c52e143b1e8028c3"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0001_e2.17.bin",
+          "byte_len": 4096,
+          "entropy": 2.16680495075097,
+          "sha256": "e4866feb07fe2c554c1e9652351062f4d1cf17179c6519af70872a640602309a"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0002_e2.17.bin",
+          "byte_len": 4096,
+          "entropy": 2.171111921918384,
+          "sha256": "dc320760400fff64165d4293339a7a7d2da7c23e3eee40ff6adba2a8a238a957"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0003_e2.23.bin",
+          "byte_len": 4096,
+          "entropy": 2.2263046007365856,
+          "sha256": "0cc8793fac25ba0790dfa6b6201257aa562237773a365842dc6d54c29d3063db"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0004_e2.29.bin",
+          "byte_len": 3584,
+          "entropy": 2.291965422445933,
+          "sha256": "591f69d1ce9341b935991cf75a0ad8feef544ee1a6a314d3543e57e37d3ed5f0"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0005_e2.31.bin",
+          "byte_len": 4096,
+          "entropy": 2.311992327258375,
+          "sha256": "ddf1df200bdfd925f48f1a8727f677bbce078cb4d8c5a883368c0c3df67f5dc7"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0006_e2.41.bin",
+          "byte_len": 4096,
+          "entropy": 2.4102119436619716,
+          "sha256": "7345b0bc6f80e21cf8b2252199528579faf38844af90d7d6b27c421ec7b96106"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0007_e2.41.bin",
+          "byte_len": 4096,
+          "entropy": 2.411114432243232,
+          "sha256": "d9badacc6583a2bd1b2e997305e7c1e39e38bb2e681c39422978da0cb1a16277"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0008_e2.42.bin",
+          "byte_len": 4096,
+          "entropy": 2.4157557028212078,
+          "sha256": "d5d652ab55566a5cd295c3b2355d7b5052669d0b4f947133eed8e9cea7e735d4"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0009_e2.42.bin",
+          "byte_len": 4096,
+          "entropy": 2.4192896716542602,
+          "sha256": "b7ea793f1a6330d88f34ec6b3a5375ee98125226da1f887730f3b31a80378018"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0010_e2.42.bin",
+          "byte_len": 4096,
+          "entropy": 2.420312219185899,
+          "sha256": "05758e60b3145a076aec50b9623b1b90e1c1b38274b12629117176eb24dfe850"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0011_e2.42.bin",
+          "byte_len": 4096,
+          "entropy": 2.424717539088936,
+          "sha256": "f9ea7d433e681516debe1dca6599716090104534e80c6b3df5262b18c13f1700"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0012_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.425661609604047,
+          "sha256": "00626e7b46a4ab90224185fa676f1748bb69fd34fb1bdbd86a977a9b33fa3567"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0013_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.4265040358403347,
+          "sha256": "b7e7d25fb0dbaf9e544ba224e5970df6df478fa1ed0e5232922fae263ff47179"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0014_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.428558414269647,
+          "sha256": "223485c61c6fe3eb137e4507c45c10ffaa61a557d3a4260c7770e95bb6186210"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0015_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.433420994466972,
+          "sha256": "c95d4cbab32b09f7cc988d17d1217f3a653466efc751ae331f8f9d924e0cc35c"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0016_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.4340355396265365,
+          "sha256": "20a90d6bb0ca958affd4166230e9a0c5562e9c8f55025e2f521ee21c7176fadf"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0017_e2.44.bin",
+          "byte_len": 4096,
+          "entropy": 2.4359841883054765,
+          "sha256": "d2383461bfce4e4f01058804fb44cdbc415d98b076775f2603349412d6c070e3"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0018_e2.44.bin",
+          "byte_len": 4096,
+          "entropy": 2.4369647299045307,
+          "sha256": "ee2f2456250f4b2ab7da4209915ca170021d709c08c6d5d8f827b11168ec78c0"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0019_e2.44.bin",
+          "byte_len": 4096,
+          "entropy": 2.4401408705584093,
+          "sha256": "cccc224f8aa49cb5eb42870f198bd79c5e1577db9a19f6762d0f1c1b34514c9a"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0020_e2.44.bin",
+          "byte_len": 4096,
+          "entropy": 2.443991141860189,
+          "sha256": "4ca110e2f40993de50d0eaf2bb39c752a9bf4d6cc7eede8ef135c6c069f44196"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0021_e2.46.bin",
+          "byte_len": 4096,
+          "entropy": 2.455662272058816,
+          "sha256": "66359111a166fba2f5518a81d5a28c3e84a3b673c3f644375079c3128df7b2c3"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0022_e2.46.bin",
+          "byte_len": 4096,
+          "entropy": 2.4560492260686435,
+          "sha256": "007577a5c009ac1a90eb96e46d64572976a39e759025ac08dbb1bcf006200579"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0023_e2.46.bin",
+          "byte_len": 4096,
+          "entropy": 2.458895613598676,
+          "sha256": "30a0a872efa1d2a6ad8226965a7f7c03b81bb502c4ebaaab0f5c412c0ec3a48d"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0024_e2.46.bin",
+          "byte_len": 4096,
+          "entropy": 2.4619413621441413,
+          "sha256": "1e8a6b1a66e7f2e622499e5f4e65780067a2fa266eddaab91bb1b7cb30cb8438"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0025_e2.47.bin",
+          "byte_len": 4096,
+          "entropy": 2.46506801637567,
+          "sha256": "a7aaa537e01853cb3ef67c490e7d8a54d53acaac77a5b847db4a7c465f3dcf08"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0026_e2.47.bin",
+          "byte_len": 4096,
+          "entropy": 2.4699541239468266,
+          "sha256": "77be6ab0dd27a5a60192aebf2f57027dbc1a4e60acffec56541d99b5935f2f3d"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0027_e2.47.bin",
+          "byte_len": 4096,
+          "entropy": 2.4738936290418825,
+          "sha256": "252af7570987d3ff06d91725ba19910757a7d7bd828121db40b951784983a7b4"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0028_e2.48.bin",
+          "byte_len": 4096,
+          "entropy": 2.4821103512202534,
+          "sha256": "5a011b97beb915def613a4740644260988eee35a18fc7b33686fcda53ce34034"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0029_e2.49.bin",
+          "byte_len": 4096,
+          "entropy": 2.4896002447565833,
+          "sha256": "dbd74b1923c2d076234b62df4fcc97be1134631bfafa61fcaac31e82e29d3119"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0030_e2.49.bin",
+          "byte_len": 4096,
+          "entropy": 2.494740957267276,
+          "sha256": "78d692399bcf460e824da33ce2c56195aa2fea07a170f075fe2fc84451d79810"
+        },
+        {
+          "relative_path": "components/ripgrep-14.1.1/chunks/chunk_0031_e2.53.bin",
+          "byte_len": 4096,
+          "entropy": 2.5342015736774286,
+          "sha256": "75dc0c01fb8b2c0b6e740057e3ef0b67f3a4268d0733725c1d19d27df8736e0d"
+        }
+      ]
+    },
+    {
+      "id": "rufus-4.15",
+      "tags": [
+        "gui",
+        "utility",
+        "usb"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0000_e2.24.bin",
+          "byte_len": 4096,
+          "entropy": 2.240411971433772,
+          "sha256": "046acbb8fa70ee765f6a4e3a591b76d8c33e6c4a21b7229da0fc335994ff6c86"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0001_e2.43.bin",
+          "byte_len": 4096,
+          "entropy": 2.426266972714923,
+          "sha256": "63542132f58e1f843244eff3985bdc22c9ace082b9afee811c8743303703b1c7"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0002_e2.44.bin",
+          "byte_len": 4096,
+          "entropy": 2.4378103646800193,
+          "sha256": "32400f6c61ec0ebd4b6572a77d205eb2cda3d210da96c9d7caf2213bca1fac9f"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0003_e2.96.bin",
+          "byte_len": 4096,
+          "entropy": 2.961799743076646,
+          "sha256": "b8986b58e50bde87ec9ebc456990822539c908bc08d7ed09818848894236fcf5"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0004_e3.10.bin",
+          "byte_len": 4096,
+          "entropy": 3.102100015319648,
+          "sha256": "9acbe1921b336e5e7d2b859fe502556f82156752e2f993a8f9b63ef1ed724a70"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0005_e4.00.bin",
+          "byte_len": 1536,
+          "entropy": 3.9976248043968385,
+          "sha256": "e58ff8011b33bfea1ee679ebfa99d01a8524bb4b1b699629038b87ae71e7ec64"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0006_e4.07.bin",
+          "byte_len": 4096,
+          "entropy": 4.065218783114834,
+          "sha256": "c134edcf9cafb47e0a117dfb8a43bf8d6e12fc624be1dc8138ce8f88312804c8"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0007_e4.19.bin",
+          "byte_len": 4096,
+          "entropy": 4.18569830693315,
+          "sha256": "55618647b5785e687ecdff47b85b3e828a9ec9d10f5637c4b4b9a2ae6d7697a4"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0008_e4.43.bin",
+          "byte_len": 4096,
+          "entropy": 4.430848412823104,
+          "sha256": "271f5949e12582c8411c40465c84ea1a7bf734ca9fcdaf78553fee2de20edd8d"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0009_e4.47.bin",
+          "byte_len": 4096,
+          "entropy": 4.474186734393868,
+          "sha256": "7f432c027f486617512754b315c9ad42c19a3b49b8c99c0cf78aca6b620efbbb"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0010_e4.89.bin",
+          "byte_len": 1536,
+          "entropy": 4.893528723722821,
+          "sha256": "e6583bd12299c4e91d3c6b8745f093a505b2bbc976ee8f9e06d45b26c975d04e"
+        },
+        {
+          "relative_path": "components/rufus-4.15/chunks/chunk_0011_e4.90.bin",
+          "byte_len": 4096,
+          "entropy": 4.896437973747203,
+          "sha256": "d768f9f8d1bf67d3d4c9daafa52365f5d36993115b78ced230ea020036a907df"
+        }
+      ]
+    },
+    {
+      "id": "sumatrapdf-3.6.1",
+      "tags": [
+        "gui",
+        "utility",
+        "document"
+      ],
+      "chunks": [
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0000_e1.51.bin",
+          "byte_len": 4096,
+          "entropy": 1.506532604174207,
+          "sha256": "e23affc0975c307d4c2640f96d82e420ca907beba818059e4f07dc55b190ed51"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0001_e1.51.bin",
+          "byte_len": 4096,
+          "entropy": 1.509136558652298,
+          "sha256": "de4df3f2482f352edc5f982bf740f336cf9cdb6a6d625ba931d0985d689153fd"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0002_e1.51.bin",
+          "byte_len": 4096,
+          "entropy": 1.5121612258285846,
+          "sha256": "3d55141ab9ac91f1bec035375f44fd59ab32cd2eaeb6edfbeb7f3c32bf59c436"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0003_e1.53.bin",
+          "byte_len": 4096,
+          "entropy": 1.5256384495232413,
+          "sha256": "4c6dd94feea3e322fde6d1e073ad8729616e5962bb0a31da27edfb5b9ae2600e"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0004_e1.53.bin",
+          "byte_len": 4096,
+          "entropy": 1.5325897182193786,
+          "sha256": "733c4d60edd145abb996cd70a9b9d7c5226c738de93c0ed11d01079e98cc79a7"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0005_e1.56.bin",
+          "byte_len": 4096,
+          "entropy": 1.5586617158740383,
+          "sha256": "91df40f661151b48f4234c78d34a5f429cdf1224de83b8ec67ad6f88f75f8859"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0006_e1.56.bin",
+          "byte_len": 4096,
+          "entropy": 1.5590558133195103,
+          "sha256": "d3bac58f2fddcd868a46f7268cd6e4e6d2455fb0f5b9fd67916c2c12f9f70654"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0007_e1.58.bin",
+          "byte_len": 4096,
+          "entropy": 1.5772622681934259,
+          "sha256": "7b758c2c07a08e4538da6805d47e381615543b1c727303bdea69e23a749f667f"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0008_e1.60.bin",
+          "byte_len": 4096,
+          "entropy": 1.5954365127971946,
+          "sha256": "0feae52f37df8adf6dd959e742d731bbe859e7362440a1f7f31cf40f04217a60"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0009_e1.60.bin",
+          "byte_len": 4096,
+          "entropy": 1.597810958122138,
+          "sha256": "b65e2f67a40dcd93a5f9f1599775afc1857e45ab19958e3766d666db7903ba90"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0010_e1.60.bin",
+          "byte_len": 4096,
+          "entropy": 1.601109252932586,
+          "sha256": "41b8e3e34ea25a5fcb03d337369b9c84d17c8c97e9801ce6215c4837ef58df48"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0011_e1.60.bin",
+          "byte_len": 4096,
+          "entropy": 1.601812342566124,
+          "sha256": "b78b9b9b24d5ec4fb13aed8d6b48ce1ccdbf48ddc7e7d5983f80f77493af9285"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0012_e1.60.bin",
+          "byte_len": 4096,
+          "entropy": 1.6039517931652734,
+          "sha256": "58b92a57ea8084db67dd33d08fca1b40c9bf5493c4e66335c09b87091f326045"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0013_e1.62.bin",
+          "byte_len": 4096,
+          "entropy": 1.621712650973405,
+          "sha256": "a1a6b6a90b38421a73a4246ca4fa114e042e91b0c5c55ba0c240f695ff6d3c90"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0014_e1.63.bin",
+          "byte_len": 4096,
+          "entropy": 1.6348589296095817,
+          "sha256": "429fb381251daa0e374a3da1d5f25221905e7f95ba84f9d9a7859e60671462ad"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0015_e1.65.bin",
+          "byte_len": 4096,
+          "entropy": 1.6465647522176916,
+          "sha256": "1506bcc573958c9b6ed68beab3ca2552eaaf7aa57606c86ed550626ea1f0478f"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0016_e1.67.bin",
+          "byte_len": 4096,
+          "entropy": 1.6650515658330158,
+          "sha256": "27f4d90844deccbc434a4a700f34cb5ee6473c3af163a85cea2b0c60aec090ec"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0017_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6784897287785838,
+          "sha256": "d9dcdd2ea509f6203045f546269b80ecb2e92ebe594badbea542e99c6026ad27"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0018_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6799368559192482,
+          "sha256": "e15294b03e87bcfe1705c3f4b87799fa0c0778f547d9b9495b4bf554b49a8643"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0019_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.6799368559192482,
+          "sha256": "e9561f7cdf733318dfbf038c87f0f1da29265120ab11367b415d33763f4b42d9"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0020_e1.68.bin",
+          "byte_len": 4096,
+          "entropy": 1.682872325376048,
+          "sha256": "0fd14422da09e527eb79f6625d46d45c9195dff7b76f7aa617900f561a713186"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0021_e1.70.bin",
+          "byte_len": 4096,
+          "entropy": 1.702041713839011,
+          "sha256": "5a03a76064a22a12dbc3106812b80e02643690956f0dfb789b67bc7d1d412fdd"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0022_e1.72.bin",
+          "byte_len": 4096,
+          "entropy": 1.7203039391755786,
+          "sha256": "895d2cecd80e29918038dd45278f9b77cfaf1f590bb9eeceb766022dc2d438e7"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0023_e1.75.bin",
+          "byte_len": 4096,
+          "entropy": 1.7548588472284306,
+          "sha256": "dd518d28b90f5cf421b32034292e843000ffee4414b79c048fbefdf3540f0302"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0024_e1.86.bin",
+          "byte_len": 4096,
+          "entropy": 1.8566316829531662,
+          "sha256": "21c16d4aa72504b99bc1ca12b8328dc0d618fcc8b92d393f2f2bba733cbeeb89"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0025_e1.86.bin",
+          "byte_len": 4096,
+          "entropy": 1.8593664721882572,
+          "sha256": "782a85b776a1a8e716dad95e57cd24962efc76fdf2f93ec1cb2d1d238df205fd"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0026_e1.95.bin",
+          "byte_len": 4096,
+          "entropy": 1.9451606996587776,
+          "sha256": "fb9b84a4a605ebdeeeb1b3f54c7a8eb2b8eb0a85f091454cb884e2af8f524bc1"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0027_e1.95.bin",
+          "byte_len": 4096,
+          "entropy": 1.947739487851403,
+          "sha256": "cc606e364a53842d9d92797e04e3e797232041ea19428f73a20632889fc01938"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0028_e1.97.bin",
+          "byte_len": 4096,
+          "entropy": 1.9677295423763619,
+          "sha256": "81f5763bc8c6912649cc6d42e32c4bd510e619a68ada8fa3a923cf3918bc7d1a"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0029_e2.01.bin",
+          "byte_len": 4096,
+          "entropy": 2.0074266787472173,
+          "sha256": "8390825731450901a1f232f06908933d1a55a8643dd6233b0e180560ce632231"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0030_e2.04.bin",
+          "byte_len": 4096,
+          "entropy": 2.035269652230407,
+          "sha256": "6ec6c020a4fa59987fa41831575f0a786da60e92ea52d7d106c15e748f60657a"
+        },
+        {
+          "relative_path": "components/sumatrapdf-3.6.1/chunks/chunk_0031_e2.04.bin",
+          "byte_len": 4096,
+          "entropy": 2.0376145879344114,
+          "sha256": "03f21921d627f656dd387d6156fae87e6381a94104cd60ce09ed31c7469877b3"
+        }
+      ]
+    }
+  ]
+}

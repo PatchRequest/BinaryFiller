@@ -2,11 +2,14 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
-use sha2::{Digest, Sha256};
 use walkdir::WalkDir;
 
-use crate::budget::{shannon_entropy, Budget};
+use crate::budget::{Budget, shannon_entropy};
 use crate::error::{Error, Result};
+use crate::hashutil::hex_sha256;
+
+const INDEX_VERSION: u32 = 1;
+const INDEX_FILE: &str = "index.json";
 
 /// On-disk corpus of pre-extracted goodware components (no full EXEs required at fill time).
 #[derive(Debug, Clone)]
@@ -31,18 +34,27 @@ pub struct ChunkMeta {
     pub sha256: String,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct CorpusIndex {
+    version: u32,
+    components: Vec<CorpusComponent>,
+}
+
 impl Corpus {
     /// Load a corpus directory.
     ///
     /// Expected layout:
     /// ```text
     /// corpus/
-    ///   index.json          # optional; rebuilt from components/ if missing
+    ///   index.json          # optional cache; rebuilt from components/ if missing/stale
     ///   components/
     ///     <id>/
     ///       meta.toml       # optional tags = ["gui", "editor"]
     ///       chunks/*.bin
     /// ```
+    ///
+    /// When `index.json` is present and consistent with on-disk chunk sizes, metadata is
+    /// loaded without re-hashing every byte (fast path for build scripts).
     pub fn load(root: impl AsRef<Path>) -> Result<Self> {
         let root = root.as_ref().to_path_buf();
         if !root.is_dir() {
@@ -54,26 +66,37 @@ impl Corpus {
             return Err(Error::EmptyCorpus(root));
         }
 
-        let mut components = Vec::new();
-        for entry in fs::read_dir(&components_dir).map_err(|e| Error::io(&components_dir, e))? {
-            let entry = entry.map_err(|e| Error::io(&components_dir, e))?;
-            let path = entry.path();
-            if !path.is_dir() {
-                continue;
-            }
-            let id = entry
-                .file_name()
-                .to_string_lossy()
-                .into_owned();
-            components.push(load_component(&root, &path, id)?);
+        if let Some(corpus) = try_load_from_index(&root)? {
+            return Ok(corpus);
         }
 
-        components.sort_by(|a, b| a.id.cmp(&b.id));
-        if components.is_empty() {
-            return Err(Error::EmptyCorpus(root));
-        }
+        let corpus = scan_components(&root)?;
+        // Persist index for subsequent loads (best-effort; load still succeeds if write fails).
+        let _ = corpus.write_index();
+        Ok(corpus)
+    }
 
-        Ok(Self { root, components })
+    /// Rescan `components/` and rewrite `index.json`.
+    pub fn rebuild_index(root: impl AsRef<Path>) -> Result<Self> {
+        let root = root.as_ref().to_path_buf();
+        let corpus = scan_components(&root)?;
+        corpus.write_index()?;
+        Ok(corpus)
+    }
+
+    /// Write `index.json` under the corpus root from the in-memory component list.
+    pub fn write_index(&self) -> Result<()> {
+        let index = CorpusIndex {
+            version: INDEX_VERSION,
+            components: self.components.clone(),
+        };
+        let path = self.root.join(INDEX_FILE);
+        let json = serde_json::to_string_pretty(&index).map_err(|source| Error::JsonParse {
+            path: path.clone(),
+            source,
+        })?;
+        fs::write(&path, json).map_err(|e| Error::io(&path, e))?;
+        Ok(())
     }
 
     pub fn root(&self) -> &Path {
@@ -108,6 +131,94 @@ impl Corpus {
     }
 }
 
+fn try_load_from_index(root: &Path) -> Result<Option<Corpus>> {
+    let index_path = root.join(INDEX_FILE);
+    if !index_path.is_file() {
+        return Ok(None);
+    }
+    let text = match fs::read_to_string(&index_path) {
+        Ok(t) => t,
+        Err(_) => return Ok(None),
+    };
+    let index: CorpusIndex = match serde_json::from_str(&text) {
+        Ok(i) => i,
+        Err(_) => return Ok(None),
+    };
+    if index.version != INDEX_VERSION || index.components.is_empty() {
+        return Ok(None);
+    }
+    if !index_is_consistent(root, &index) {
+        return Ok(None);
+    }
+    let mut components = index.components;
+    components.sort_by(|a, b| a.id.cmp(&b.id));
+    Ok(Some(Corpus {
+        root: root.to_path_buf(),
+        components,
+    }))
+}
+
+/// Cheap consistency check: every listed chunk exists with matching size; no extra component dirs.
+fn index_is_consistent(root: &Path, index: &CorpusIndex) -> bool {
+    let components_dir = root.join("components");
+    let Ok(entries) = fs::read_dir(&components_dir) else {
+        return false;
+    };
+    let mut disk_ids = Vec::new();
+    for entry in entries.flatten() {
+        if entry.path().is_dir() {
+            disk_ids.push(entry.file_name().to_string_lossy().into_owned());
+        }
+    }
+    disk_ids.sort();
+    let mut index_ids: Vec<String> = index.components.iter().map(|c| c.id.clone()).collect();
+    index_ids.sort();
+    if disk_ids != index_ids {
+        return false;
+    }
+
+    for component in &index.components {
+        for chunk in &component.chunks {
+            let path = root.join(&chunk.relative_path);
+            let Ok(meta) = fs::metadata(&path) else {
+                return false;
+            };
+            if !meta.is_file() || meta.len() as usize != chunk.byte_len {
+                return false;
+            }
+        }
+    }
+    true
+}
+
+fn scan_components(root: &Path) -> Result<Corpus> {
+    let components_dir = root.join("components");
+    if !components_dir.is_dir() {
+        return Err(Error::EmptyCorpus(root.to_path_buf()));
+    }
+
+    let mut components = Vec::new();
+    for entry in fs::read_dir(&components_dir).map_err(|e| Error::io(&components_dir, e))? {
+        let entry = entry.map_err(|e| Error::io(&components_dir, e))?;
+        let path = entry.path();
+        if !path.is_dir() {
+            continue;
+        }
+        let id = entry.file_name().to_string_lossy().into_owned();
+        components.push(load_component(root, &path, id)?);
+    }
+
+    components.sort_by(|a, b| a.id.cmp(&b.id));
+    if components.is_empty() {
+        return Err(Error::EmptyCorpus(root.to_path_buf()));
+    }
+
+    Ok(Corpus {
+        root: root.to_path_buf(),
+        components,
+    })
+}
+
 fn load_component(corpus_root: &Path, component_dir: &Path, id: String) -> Result<CorpusComponent> {
     let tags = load_tags(component_dir)?;
     let chunks_dir = component_dir.join("chunks");
@@ -123,10 +234,7 @@ fn load_component(corpus_root: &Path, component_dir: &Path, id: String) -> Resul
             if data.is_empty() {
                 continue;
             }
-            let relative_path = path
-                .strip_prefix(corpus_root)
-                .unwrap_or(path)
-                .to_path_buf();
+            let relative_path = path.strip_prefix(corpus_root).unwrap_or(path).to_path_buf();
             let sha256 = hex_sha256(&data);
             chunks.push(ChunkMeta {
                 relative_path,
@@ -157,13 +265,6 @@ fn load_tags(component_dir: &Path) -> Result<Vec<String>> {
         source,
     })?;
     Ok(meta.tags)
-}
-
-fn hex_sha256(data: &[u8]) -> String {
-    let mut hasher = Sha256::new();
-    hasher.update(data);
-    let digest = hasher.finalize();
-    digest.iter().map(|b| format!("{b:02x}")).collect()
 }
 
 /// Filter and rank chunks under a budget. Lower entropy first, then smaller size.
@@ -224,6 +325,8 @@ mod tests {
 
         let corpus = Corpus::load(root).unwrap();
         assert_eq!(corpus.components().len(), 1);
+        assert!(root.join(INDEX_FILE).is_file(), "load should write index");
+
         let budget = Budget {
             max_blob_bytes: 10_000,
             max_chunk_entropy: 3.0,
@@ -235,5 +338,59 @@ mod tests {
         let selected = select_chunks(all, &budget);
         assert_eq!(selected.len(), 1);
         assert!(selected[0].relative_path.ends_with("a.bin"));
+    }
+
+    #[test]
+    fn second_load_uses_index_without_rescan_need() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let chunks = root.join("components/sample/chunks");
+        fs::create_dir_all(&chunks).unwrap();
+        fs::write(chunks.join("a.bin"), vec![b'B'; 300]).unwrap();
+
+        let first = Corpus::load(root).unwrap();
+        let first_sha = first.components()[0].chunks[0].sha256.clone();
+        assert!(root.join(INDEX_FILE).is_file());
+
+        let second = Corpus::load(root).unwrap();
+        assert_eq!(second.components()[0].chunks[0].sha256, first_sha);
+        assert_eq!(second.components()[0].chunks[0].byte_len, 300);
+    }
+
+    #[test]
+    fn stale_index_triggers_rescan() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let chunks = root.join("components/sample/chunks");
+        fs::create_dir_all(&chunks).unwrap();
+        fs::write(chunks.join("a.bin"), vec![b'C'; 256]).unwrap();
+        let _ = Corpus::load(root).unwrap();
+
+        // Grow the chunk so index byte_len no longer matches.
+        fs::write(chunks.join("a.bin"), vec![b'C'; 512]).unwrap();
+        let corpus = Corpus::load(root).unwrap();
+        assert_eq!(corpus.components()[0].chunks[0].byte_len, 512);
+    }
+
+    #[test]
+    fn tag_filter_prefers_matching_then_falls_back() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        for (id, tags) in [
+            ("gui-tool", r#"tags = ["gui"]"#),
+            ("cli-tool", r#"tags = ["console"]"#),
+        ] {
+            let c = root.join(format!("components/{id}/chunks"));
+            fs::create_dir_all(&c).unwrap();
+            fs::write(c.join("a.bin"), vec![b'x'; 128]).unwrap();
+            fs::write(root.join(format!("components/{id}/meta.toml")), tags).unwrap();
+        }
+        let corpus = Corpus::load(root).unwrap();
+        let gui = corpus.components_for_tags(&["gui".into()]);
+        assert_eq!(gui.len(), 1);
+        assert_eq!(gui[0].id, "gui-tool");
+
+        let none = corpus.components_for_tags(&["missing".into()]);
+        assert_eq!(none.len(), 2, "fallback to all when no tag matches");
     }
 }

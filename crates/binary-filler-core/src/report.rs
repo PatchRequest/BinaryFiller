@@ -11,6 +11,9 @@ pub struct FeatureSummary {
     pub subsystem: String,
     pub synthetic_blobs: bool,
     pub has_icon: bool,
+    /// Source paths (corpus-relative) or synthetic markers for each planned blob.
+    #[serde(default)]
+    pub blob_sources: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

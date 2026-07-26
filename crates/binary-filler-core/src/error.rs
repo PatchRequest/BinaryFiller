@@ -28,6 +28,9 @@ pub enum Error {
     #[error("invalid budget: {0}")]
     InvalidBudget(String),
 
+    #[error("invalid argument: {0}")]
+    InvalidArgument(String),
+
     #[error("corpus not found or empty at {0}")]
     EmptyCorpus(PathBuf),
 
@@ -37,8 +40,19 @@ pub enum Error {
     #[error("fill plan exceeds budget: {0}")]
     BudgetExceeded(String),
 
-    #[error("{0}")]
-    Msg(String),
+    /// Ops fail policy: a real corpus path/load is required.
+    #[error("fail policy require_corpus: {0}")]
+    RequireCorpus(String),
+
+    /// Ops fail policy: synthetic filler blobs are forbidden.
+    #[error("fail policy forbid_synthetic_blobs: {0}")]
+    ForbidSyntheticBlobs(String),
+
+    #[error("PE error: {0}")]
+    Pe(String),
+
+    #[error("verification failed: {0}")]
+    VerifyFailed(String),
 }
 
 impl Error {

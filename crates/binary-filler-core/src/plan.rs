@@ -1,5 +1,5 @@
 use crate::budget::Budget;
-use crate::corpus::{select_chunks, ChunkMeta, Corpus};
+use crate::corpus::{ChunkMeta, Corpus, select_chunks};
 use crate::cover::{CoverProfile, ImportProfile};
 use crate::error::{Error, Result};
 use crate::fail_policy::FailPolicy;
@@ -38,8 +38,8 @@ pub fn select_plan(
     cover.validate()?;
 
     if fail.require_corpus && corpus.is_none() {
-        return Err(Error::Msg(
-            "fail policy require_corpus: no corpus loaded (set BINARY_FILLER_CORPUS or Builder::corpus)".into(),
+        return Err(Error::RequireCorpus(
+            "no corpus loaded (set BINARY_FILLER_CORPUS or Builder::corpus)".into(),
         ));
     }
 
@@ -49,9 +49,8 @@ pub fn select_plan(
             let selected = plan_from_corpus(&cover, &budget, corpus)?;
             if selected.is_empty() {
                 if fail.forbid_synthetic_blobs {
-                    return Err(Error::Msg(
-                        "fail policy forbid_synthetic_blobs: corpus had no eligible chunks under budget"
-                            .into(),
+                    return Err(Error::ForbidSyntheticBlobs(
+                        "corpus had no eligible chunks under budget".into(),
                     ));
                 }
                 (synthetic_blobs_for_budget(&budget), true)
@@ -61,9 +60,7 @@ pub fn select_plan(
         }
         None => {
             if fail.forbid_synthetic_blobs {
-                return Err(Error::Msg(
-                    "fail policy forbid_synthetic_blobs: no corpus available".into(),
-                ));
+                return Err(Error::ForbidSyntheticBlobs("no corpus available".into()));
             }
             (synthetic_blobs_for_budget(&budget), true)
         }
@@ -89,13 +86,18 @@ fn plan_from_corpus(
 
     let mut blobs = Vec::with_capacity(selected.len());
     for (idx, meta) in selected.into_iter().enumerate() {
-        let mut data = corpus.read_chunk(meta)?;
-        if data.len() > budget.max_chunk_bytes {
-            data.truncate(budget.max_chunk_bytes);
+        let data = corpus.read_chunk(meta)?;
+        // select_chunks already enforces size bounds; re-check for index/disk drift.
+        if data.len() < budget.min_chunk_bytes || data.len() > budget.max_chunk_bytes {
+            continue;
+        }
+        let entropy = crate::budget::shannon_entropy(&data);
+        if entropy < budget.min_chunk_entropy || entropy > budget.max_chunk_entropy {
+            continue;
         }
         blobs.push(PlannedBlob {
             name: format!("chunk_{idx:02}"),
-            entropy: crate::budget::shannon_entropy(&data),
+            entropy,
             source: meta.relative_path.display().to_string(),
             data,
         });
@@ -153,6 +155,7 @@ impl FillPlan {
             subsystem: format!("{:?}", self.cover.subsystem),
             synthetic_blobs: self.synthetic_blobs,
             has_icon: self.cover.icon.is_some(),
+            blob_sources: self.blobs.iter().map(|b| b.source.clone()).collect(),
         }
     }
 }
@@ -161,6 +164,8 @@ impl FillPlan {
 mod tests {
     use super::*;
     use crate::cover::Subsystem;
+    use std::fs;
+    use std::io::Write;
 
     fn sample_cover() -> CoverProfile {
         CoverProfile {
@@ -187,21 +192,73 @@ mod tests {
         assert!(plan.synthetic_blobs);
         assert!(plan.total_blob_bytes() <= budget.max_blob_bytes);
         assert!(!plan.blobs.is_empty());
+        assert!(
+            plan.feature_summary()
+                .blob_sources
+                .iter()
+                .all(|s| s.starts_with("synthetic:"))
+        );
     }
 
     #[test]
     fn ops_policy_rejects_missing_corpus() {
+        let err =
+            select_plan(sample_cover(), Budget::standard(), None, &FailPolicy::ops()).unwrap_err();
+        assert!(
+            matches!(
+                err,
+                Error::RequireCorpus(_) | Error::ForbidSyntheticBlobs(_)
+            ),
+            "{err}"
+        );
+    }
+
+    #[test]
+    fn ops_policy_rejects_empty_eligible_chunks() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let chunks = root.join("components/empty/chunks");
+        fs::create_dir_all(&chunks).unwrap();
+        // High-entropy only material — ineligible under standard budget.
+        let mut high = Vec::with_capacity(512);
+        for i in 0..512 {
+            high.push((i * 17) as u8);
+        }
+        fs::write(chunks.join("h.bin"), &high).unwrap();
+        let mut meta = fs::File::create(root.join("components/empty/meta.toml")).unwrap();
+        writeln!(meta, r#"tags = ["gui"]"#).unwrap();
+
+        let corpus = Corpus::load(root).unwrap();
         let err = select_plan(
             sample_cover(),
             Budget::standard(),
-            None,
+            Some(&corpus),
             &FailPolicy::ops(),
         )
         .unwrap_err();
-        let msg = err.to_string();
-        assert!(
-            msg.contains("require_corpus") || msg.contains("forbid_synthetic"),
-            "{msg}"
-        );
+        assert!(matches!(err, Error::ForbidSyntheticBlobs(_)), "{err}");
+    }
+
+    #[test]
+    fn lab_policy_falls_back_when_chunks_ineligible() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let chunks = root.join("components/empty/chunks");
+        fs::create_dir_all(&chunks).unwrap();
+        let mut high = Vec::with_capacity(512);
+        for i in 0..512 {
+            high.push((i * 17) as u8);
+        }
+        fs::write(chunks.join("h.bin"), &high).unwrap();
+
+        let corpus = Corpus::load(root).unwrap();
+        let plan = select_plan(
+            sample_cover(),
+            Budget::standard(),
+            Some(&corpus),
+            &FailPolicy::lab(),
+        )
+        .unwrap();
+        assert!(plan.synthetic_blobs);
     }
 }

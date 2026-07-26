@@ -120,10 +120,7 @@ impl CoverProfile {
     pub fn file_version_string(&self) -> String {
         format!(
             "{}.{}.{}.{}",
-            self.file_version[0],
-            self.file_version[1],
-            self.file_version[2],
-            self.file_version[3]
+            self.file_version[0], self.file_version[1], self.file_version[2], self.file_version[3]
         )
     }
 

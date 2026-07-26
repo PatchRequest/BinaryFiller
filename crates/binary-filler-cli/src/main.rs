@@ -2,17 +2,22 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use binary_filler_core::{
-    cover_preset, ingest_file, preset_toml, security_directory, stamp_certificate_file, Budget,
-    Corpus, FailPolicy, IngestOptions, PRESET_NAMES,
+    Budget, Corpus, Error, IngestOptions, PRESET_NAMES, cover_preset, ingest_file, preset_toml,
+    security_directory, stamp_certificate_file, utf16le_contains,
 };
 use clap::{Parser, Subcommand};
-use object::pe::{IMAGE_DIRECTORY_ENTRY_RESOURCE, IMAGE_SUBSYSTEM_WINDOWS_GUI};
-use object::read::pe::{PeFile, PeFile64};
 use object::LittleEndian as LE;
+use object::pe::{
+    IMAGE_DIRECTORY_ENTRY_RESOURCE, IMAGE_SUBSYSTEM_WINDOWS_GUI, ImageNtHeaders32, ImageNtHeaders64,
+};
+use object::read::pe::{ImageNtHeaders, PeFile};
 use object::{Object, ObjectSection};
 
 #[derive(Debug, Parser)]
-#[command(name = "binary-filler", about = "Corpus and fill helpers for binary-filler")]
+#[command(
+    name = "binary-filler",
+    about = "Corpus and fill helpers for binary-filler"
+)]
 struct Cli {
     #[command(subcommand)]
     command: Command,
@@ -120,6 +125,11 @@ enum CorpusCommand {
         #[arg(long, short = 'c', default_value = "corpus")]
         corpus: PathBuf,
     },
+    /// Rescan components/ and rewrite index.json.
+    Reindex {
+        #[arg(long, short = 'c', default_value = "corpus")]
+        corpus: PathBuf,
+    },
 }
 
 #[derive(Debug, Subcommand)]
@@ -127,13 +137,9 @@ enum PresetCommand {
     /// List built-in preset names.
     List,
     /// Print preset TOML to stdout.
-    Show {
-        name: String,
-    },
+    Show { name: String },
     /// Validate that a preset loads.
-    Check {
-        name: String,
-    },
+    Check { name: String },
 }
 
 fn main() -> ExitCode {
@@ -148,10 +154,22 @@ fn main() -> ExitCode {
             window,
             max_entropy,
             raw,
-        } => run_ingest(source, corpus, id, tags, max_chunks, window, max_entropy, raw),
+        } => run_ingest(IngestCli {
+            source,
+            corpus,
+            id,
+            tags,
+            max_chunks,
+            window,
+            max_entropy,
+            raw,
+        }),
         Command::Corpus {
             command: CorpusCommand::List { corpus },
         } => run_corpus_list(corpus),
+        Command::Corpus {
+            command: CorpusCommand::Reindex { corpus },
+        } => run_corpus_reindex(corpus),
         Command::Preset {
             command: PresetCommand::List,
         } => {
@@ -180,7 +198,14 @@ fn main() -> ExitCode {
             require_gui,
             require_imports,
             require_cert,
-        } => run_verify(pe, company, product, require_gui, require_imports, require_cert),
+        } => run_verify(VerifyCli {
+            pe,
+            company,
+            product,
+            require_gui,
+            require_imports,
+            require_cert,
+        }),
         Command::StampCert {
             donor,
             target,
@@ -197,13 +222,13 @@ fn main() -> ExitCode {
     }
 }
 
-fn run_preset_check(name: String) -> Result<(), binary_filler_core::Error> {
+fn run_preset_check(name: String) -> Result<(), Error> {
     let cover = cover_preset(&name)?;
     println!("ok {} ({})", cover.name, cover.product_name);
     Ok(())
 }
 
-fn run_ingest(
+struct IngestCli {
     source: PathBuf,
     corpus: PathBuf,
     id: Option<String>,
@@ -212,8 +237,11 @@ fn run_ingest(
     window: usize,
     max_entropy: f64,
     raw: bool,
-) -> Result<(), binary_filler_core::Error> {
-    let tag_list: Vec<String> = tags
+}
+
+fn run_ingest(args: IngestCli) -> Result<(), Error> {
+    let tag_list: Vec<String> = args
+        .tags
         .split(',')
         .map(str::trim)
         .filter(|s| !s.is_empty())
@@ -221,22 +249,22 @@ fn run_ingest(
         .collect();
 
     let options = IngestOptions {
-        component_id: id.unwrap_or_default(),
+        component_id: args.id.unwrap_or_default(),
         tags: tag_list,
-        window_bytes: window,
-        stride_bytes: window,
+        window_bytes: args.window,
+        stride_bytes: args.window,
         budget: Budget {
             max_blob_bytes: usize::MAX,
-            max_chunk_entropy: max_entropy,
+            max_chunk_entropy: args.max_entropy,
             min_chunk_entropy: 1.5,
             min_chunk_bytes: 256,
-            max_chunk_bytes: window.max(256),
+            max_chunk_bytes: args.window.max(256),
         },
-        max_chunks,
-        prefer_pe_sections: !raw,
+        max_chunks: args.max_chunks,
+        prefer_pe_sections: !args.raw,
     };
 
-    let report = ingest_file(&corpus, &source, options)?;
+    let report = ingest_file(&args.corpus, &args.source, options)?;
     println!("ingested {}", report.source.display());
     println!("  component : {}", report.component_id);
     println!("  dir       : {}", report.component_dir.display());
@@ -249,7 +277,7 @@ fn run_ingest(
     Ok(())
 }
 
-fn run_corpus_list(corpus: PathBuf) -> Result<(), binary_filler_core::Error> {
+fn run_corpus_list(corpus: PathBuf) -> Result<(), Error> {
     let corpus = Corpus::load(&corpus)?;
     println!("corpus {}", corpus.root().display());
     for component in corpus.components() {
@@ -268,16 +296,21 @@ fn run_corpus_list(corpus: PathBuf) -> Result<(), binary_filler_core::Error> {
             component.tags
         );
     }
-    // Touch FailPolicy so docs examples stay linked in CLI help generation builds.
-    let _ = FailPolicy::ops();
     Ok(())
 }
 
-fn run_stamp_cert(
-    donor: PathBuf,
-    target: PathBuf,
-    output: Option<PathBuf>,
-) -> Result<(), binary_filler_core::Error> {
+fn run_corpus_reindex(corpus: PathBuf) -> Result<(), Error> {
+    let corpus = Corpus::rebuild_index(&corpus)?;
+    println!(
+        "reindexed {} ({} components) → {}",
+        corpus.root().display(),
+        corpus.components().len(),
+        corpus.root().join("index.json").display()
+    );
+    Ok(())
+}
+
+fn run_stamp_cert(donor: PathBuf, target: PathBuf, output: Option<PathBuf>) -> Result<(), Error> {
     let out = output.unwrap_or_else(|| target.clone());
     let report = stamp_certificate_file(&donor, &target, &out)?;
     println!("stamped certificate (INVALID — hash will not verify)");
@@ -291,32 +324,28 @@ fn run_stamp_cert(
     Ok(())
 }
 
-fn run_verify(
+struct VerifyCli {
     pe: PathBuf,
     company: Option<String>,
     product: Option<String>,
     require_gui: bool,
     require_imports: String,
     require_cert: bool,
-) -> Result<(), binary_filler_core::Error> {
-    let data = std::fs::read(&pe).map_err(|e| binary_filler_core::Error::io(&pe, e))?;
+}
+
+fn run_verify(args: VerifyCli) -> Result<(), Error> {
+    let data = std::fs::read(&args.pe).map_err(|e| Error::io(&args.pe, e))?;
     if data.len() < 64 || &data[..2] != b"MZ" {
-        return Err(binary_filler_core::Error::Msg(format!(
+        return Err(Error::Pe(format!(
             "{} is not a PE (missing MZ)",
-            pe.display()
+            args.pe.display()
         )));
     }
 
-    let file = object::File::parse(&*data)
-        .map_err(|e| binary_filler_core::Error::Msg(format!("PE parse: {e}")))?;
-    let pe64: PeFile64<'_> = PeFile::parse(&*data)
-        .map_err(|e| binary_filler_core::Error::Msg(format!("PeFile64: {e}")))?;
+    let file = object::File::parse(&*data).map_err(|e| Error::Pe(format!("PE parse: {e}")))?;
 
-    let subsystem = pe64.nt_headers().optional_header.subsystem.get(LE);
-    let has_rsrc = pe64
-        .data_directories()
-        .get(IMAGE_DIRECTORY_ENTRY_RESOURCE)
-        .is_some_and(|d| d.virtual_address.get(LE) != 0);
+    let subsystem = pe_subsystem(&data)?;
+    let has_rsrc = pe_resource_dir_present(&data)?;
 
     let (sec_off, sec_size) = security_directory(&data)?;
     let has_cert = sec_off != 0 && sec_size != 0;
@@ -328,14 +357,14 @@ fn run_verify(
 
     let mut imports: Vec<String> = file
         .imports()
-        .map_err(|e| binary_filler_core::Error::Msg(format!("imports: {e}")))?
+        .map_err(|e| Error::Pe(format!("imports: {e}")))?
         .iter()
         .map(|i| String::from_utf8_lossy(i.library()).to_ascii_lowercase())
         .collect();
     imports.sort();
     imports.dedup();
 
-    println!("pe {}", pe.display());
+    println!("pe {}", args.pe.display());
     println!("  size       {}", data.len());
     println!("  subsystem  {subsystem} (2=GUI)");
     println!("  rsrc_dir   {has_rsrc}");
@@ -343,53 +372,72 @@ fn run_verify(
     println!("  sections   {}", sections.join(","));
     println!("  imports    {}", imports.join(","));
 
-    let mut failed = false;
-    if require_gui && subsystem != IMAGE_SUBSYSTEM_WINDOWS_GUI {
-        eprintln!("FAIL: expected GUI subsystem");
-        failed = true;
+    let mut failures = Vec::new();
+    if args.require_gui && subsystem != IMAGE_SUBSYSTEM_WINDOWS_GUI {
+        failures.push("expected GUI subsystem".into());
     }
     if !has_rsrc {
-        eprintln!("FAIL: missing resource directory");
-        failed = true;
+        failures.push("missing resource directory".into());
     }
     if !sections.iter().any(|s| s.starts_with(".rsrc")) {
-        eprintln!("FAIL: missing .rsrc section");
-        failed = true;
+        failures.push("missing .rsrc section".into());
     }
-    if require_cert && !has_cert {
-        eprintln!("FAIL: missing Authenticode security directory");
-        failed = true;
+    if args.require_cert && !has_cert {
+        failures.push("missing Authenticode security directory".into());
     }
 
-    for s in [company.as_deref(), product.as_deref()].into_iter().flatten() {
+    for s in [args.company.as_deref(), args.product.as_deref()]
+        .into_iter()
+        .flatten()
+    {
         if !utf16le_contains(&data, s) {
-            eprintln!("FAIL: missing UTF-16 string {s:?}");
-            failed = true;
+            failures.push(format!("missing UTF-16 string {s:?}"));
         } else {
             println!("  utf16 ok   {s}");
         }
     }
 
-    for dll in require_imports.split(',').map(str::trim).filter(|s| !s.is_empty()) {
+    for dll in args
+        .require_imports
+        .split(',')
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+    {
         if !imports.iter().any(|i| i == dll) {
-            eprintln!("FAIL: missing import {dll}");
-            failed = true;
+            failures.push(format!("missing import {dll}"));
         }
     }
 
-    if failed {
-        return Err(binary_filler_core::Error::Msg("verify failed".into()));
+    if !failures.is_empty() {
+        for f in &failures {
+            eprintln!("FAIL: {f}");
+        }
+        return Err(Error::VerifyFailed(failures.join("; ")));
     }
     println!("RESULT=OK");
     Ok(())
 }
 
-fn utf16le_contains(haystack: &[u8], needle: &str) -> bool {
-    let encoded: Vec<u8> = needle
-        .encode_utf16()
-        .flat_map(|u| u.to_le_bytes())
-        .collect();
-    haystack
-        .windows(encoded.len())
-        .any(|w| w == encoded.as_slice())
+fn pe_subsystem(data: &[u8]) -> Result<u16, Error> {
+    if let Ok(pe) = PeFile::<ImageNtHeaders64>::parse(data) {
+        return Ok(pe.nt_headers().optional_header.subsystem.get(LE));
+    }
+    if let Ok(pe) = PeFile::<ImageNtHeaders32>::parse(data) {
+        return Ok(pe.nt_headers().optional_header.subsystem.get(LE));
+    }
+    Err(Error::Pe("unsupported PE (neither PE32 nor PE32+)".into()))
+}
+
+fn pe_resource_dir_present(data: &[u8]) -> Result<bool, Error> {
+    fn check<H: ImageNtHeaders>(data: &[u8]) -> Option<bool> {
+        let pe = PeFile::<H>::parse(data).ok()?;
+        Some(
+            pe.data_directories()
+                .get(IMAGE_DIRECTORY_ENTRY_RESOURCE)
+                .is_some_and(|d| d.virtual_address.get(LE) != 0),
+        )
+    }
+    check::<ImageNtHeaders64>(data)
+        .or_else(|| check::<ImageNtHeaders32>(data))
+        .ok_or_else(|| Error::Pe("unsupported PE (neither PE32 nor PE32+)".into()))
 }

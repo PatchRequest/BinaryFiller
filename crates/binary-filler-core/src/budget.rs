@@ -28,19 +28,14 @@ pub struct Budget {
 }
 
 impl Default for Budget {
+    /// Same as [`Self::standard`] — the lab/ops default footprint.
     fn default() -> Self {
-        Self {
-            max_blob_bytes: 256 * 1024,
-            max_chunk_entropy: 6.0,
-            min_chunk_entropy: 1.5,
-            min_chunk_bytes: 64,
-            max_chunk_bytes: 64 * 1024,
-        }
+        Self::standard()
     }
 }
 
 impl Budget {
-    /// Lab default: modest footprint (~32 KiB blobs).
+    /// Lab/ops default: modest footprint (~32 KiB blobs).
     pub fn standard() -> Self {
         Self {
             max_blob_bytes: 32 * 1024,
@@ -168,5 +163,11 @@ mod tests {
     #[test]
     fn default_budget_validates() {
         Budget::default().validate().unwrap();
+    }
+
+    #[test]
+    fn default_matches_standard() {
+        assert_eq!(Budget::default(), Budget::standard());
+        assert_eq!(Budget::ops(), Budget::standard());
     }
 }

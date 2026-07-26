@@ -32,21 +32,21 @@ pub struct CertStampReport {
 pub fn extract_certificate_table(pe: &[u8]) -> Result<Vec<u8>> {
     let (off, size) = security_directory(pe)?;
     if size == 0 || off == 0 {
-        return Err(Error::Msg(
+        return Err(Error::Pe(
             "PE has no Authenticode certificate table (security data directory empty)".into(),
         ));
     }
     let start = off as usize;
     let end = start.saturating_add(size as usize);
     if end > pe.len() {
-        return Err(Error::Msg(format!(
+        return Err(Error::Pe(format!(
             "security directory out of bounds: offset={off} size={size} file_len={}",
             pe.len()
         )));
     }
     // Basic WIN_CERTIFICATE sanity: first DWORD is length.
     if size < 8 {
-        return Err(Error::Msg("certificate table too small".into()));
+        return Err(Error::Pe("certificate table too small".into()));
     }
     Ok(pe[start..end].to_vec())
 }
@@ -93,10 +93,10 @@ pub fn stamp_certificate_file(
 /// In-memory stamp: append `cert` to `target` PE and point the security directory at it.
 pub fn stamp_certificate_bytes(target: &[u8], cert: &[u8]) -> Result<(Vec<u8>, bool)> {
     if cert.is_empty() {
-        return Err(Error::Msg("certificate blob is empty".into()));
+        return Err(Error::Pe("certificate blob is empty".into()));
     }
     if cert.len() > u32::MAX as usize {
-        return Err(Error::Msg("certificate blob too large".into()));
+        return Err(Error::Pe("certificate blob too large".into()));
     }
 
     let (stripped, had_existing) = strip_certificate_table(target)?;
@@ -108,7 +108,7 @@ pub fn stamp_certificate_bytes(target: &[u8], cert: &[u8]) -> Result<(Vec<u8>, b
     }
     let cert_off = out.len();
     if cert_off > u32::MAX as usize {
-        return Err(Error::Msg("PE too large to attach certificate".into()));
+        return Err(Error::Pe("PE too large to attach certificate".into()));
     }
     out.extend_from_slice(cert);
     set_security_directory(&mut out, cert_off as u32, cert.len() as u32)?;
@@ -127,7 +127,7 @@ pub fn strip_certificate_table(pe: &[u8]) -> Result<(Vec<u8>, bool)> {
     let start = off as usize;
     let end = start.saturating_add(size as usize);
     if end > pe.len() {
-        return Err(Error::Msg(
+        return Err(Error::Pe(
             "target security directory out of bounds; refusing to strip".into(),
         ));
     }
@@ -147,7 +147,9 @@ pub fn security_directory(pe: &[u8]) -> Result<(u32, u32)> {
     let layout = pe_layout(pe)?;
     let entry_off = layout.data_dirs_offset + IMAGE_DIRECTORY_ENTRY_SECURITY * 8;
     if entry_off + 8 > pe.len() {
-        return Err(Error::Msg("security data directory entry out of bounds".into()));
+        return Err(Error::Pe(
+            "security data directory entry out of bounds".into(),
+        ));
     }
     let off = u32::from_le_bytes(pe[entry_off..entry_off + 4].try_into().unwrap());
     let size = u32::from_le_bytes(pe[entry_off + 4..entry_off + 8].try_into().unwrap());
@@ -157,13 +159,13 @@ pub fn security_directory(pe: &[u8]) -> Result<(u32, u32)> {
 fn set_security_directory(pe: &mut [u8], off: u32, size: u32) -> Result<()> {
     let layout = pe_layout(pe)?;
     if IMAGE_DIRECTORY_ENTRY_SECURITY >= layout.number_of_rva_and_sizes as usize {
-        return Err(Error::Msg(
+        return Err(Error::Pe(
             "PE NumberOfRvaAndSizes too small for security directory".into(),
         ));
     }
     let entry_off = layout.data_dirs_offset + IMAGE_DIRECTORY_ENTRY_SECURITY * 8;
     if entry_off + 8 > pe.len() {
-        return Err(Error::Msg("cannot write security data directory".into()));
+        return Err(Error::Pe("cannot write security data directory".into()));
     }
     pe[entry_off..entry_off + 4].copy_from_slice(&off.to_le_bytes());
     pe[entry_off + 4..entry_off + 8].copy_from_slice(&size.to_le_bytes());
@@ -175,7 +177,7 @@ fn zero_optional_checksum(pe: &mut [u8]) -> Result<()> {
     // CheckSum is at optional header + 64 for both PE32 and PE32+.
     let checksum_off = layout.optional_header_offset + 64;
     if checksum_off + 4 > pe.len() {
-        return Err(Error::Msg("checksum field out of bounds".into()));
+        return Err(Error::Pe("checksum field out of bounds".into()));
     }
     pe[checksum_off..checksum_off + 4].copy_from_slice(&0u32.to_le_bytes());
     Ok(())
@@ -190,18 +192,21 @@ struct PeLayout {
 
 fn pe_layout(pe: &[u8]) -> Result<PeLayout> {
     if pe.len() < 0x40 || &pe[0..2] != b"MZ" {
-        return Err(Error::Msg("not a PE file (missing MZ)".into()));
+        return Err(Error::Pe("not a PE file (missing MZ)".into()));
     }
     let e_lfanew = u32::from_le_bytes(pe[0x3c..0x40].try_into().unwrap()) as usize;
     if e_lfanew + 4 + 20 + 2 > pe.len() {
-        return Err(Error::Msg("invalid e_lfanew".into()));
+        return Err(Error::Pe("invalid e_lfanew".into()));
     }
     if &pe[e_lfanew..e_lfanew + 4] != b"PE\0\0" {
-        return Err(Error::Msg("missing PE signature".into()));
+        return Err(Error::Pe("missing PE signature".into()));
     }
     let optional_header_offset = e_lfanew + 4 + 20;
-    let magic =
-        u16::from_le_bytes(pe[optional_header_offset..optional_header_offset + 2].try_into().unwrap());
+    let magic = u16::from_le_bytes(
+        pe[optional_header_offset..optional_header_offset + 2]
+            .try_into()
+            .unwrap(),
+    );
 
     let (num_rva_off, data_dirs_offset) = match magic {
         PE32_MAGIC => {
@@ -213,19 +218,19 @@ fn pe_layout(pe: &[u8]) -> Result<PeLayout> {
             (optional_header_offset + 108, optional_header_offset + 112)
         }
         _ => {
-            return Err(Error::Msg(format!(
+            return Err(Error::Pe(format!(
                 "unsupported optional header magic {magic:#x}"
-            )))
+            )));
         }
     };
 
     if num_rva_off + 4 > pe.len() {
-        return Err(Error::Msg("NumberOfRvaAndSizes out of bounds".into()));
+        return Err(Error::Pe("NumberOfRvaAndSizes out of bounds".into()));
     }
     let number_of_rva_and_sizes =
         u32::from_le_bytes(pe[num_rva_off..num_rva_off + 4].try_into().unwrap());
     if number_of_rva_and_sizes < 5 {
-        return Err(Error::Msg(
+        return Err(Error::Pe(
             "PE has fewer than 5 data directories; cannot store security directory".into(),
         ));
     }
@@ -282,7 +287,10 @@ mod tests {
         assert!(!had);
         let (off, size) = security_directory(&stamped).unwrap();
         assert_eq!(size as usize, cert.len());
-        assert_eq!(&stamped[off as usize..off as usize + size as usize], cert.as_slice());
+        assert_eq!(
+            &stamped[off as usize..off as usize + size as usize],
+            cert.as_slice()
+        );
         // Round-trip extract
         let again = extract_certificate_table(&stamped).unwrap();
         assert_eq!(again, cert);

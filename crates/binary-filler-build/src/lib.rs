@@ -14,11 +14,18 @@ use std::path::{Path, PathBuf};
 use binary_filler_core::select_plan;
 
 pub use binary_filler_core::{
-    cover_preset, preset_toml, Budget, Corpus, CoverProfile, EmitReport, Error, FailPolicy,
-    FeatureSummary, FillPlan, ImportProfile, Subsystem, PRESET_NAMES,
+    Budget, Corpus, CoverProfile, EmitReport, Error, FailPolicy, FeatureSummary, FillPlan,
+    ImportProfile, PRESET_NAMES, Subsystem, cover_preset, preset_toml,
 };
 
 /// Fluent builder intended for use inside `build.rs`.
+///
+/// Cover resolution order (first wins):
+/// 1. [`Builder::cover`] — in-memory profile
+/// 2. [`Builder::cover_preset`] — built-in preset name
+/// 3. [`Builder::cover_file`] — TOML path
+///
+/// Configuring more than one source is allowed; lower-priority sources are ignored.
 #[derive(Debug)]
 pub struct Builder {
     cover: Option<CoverProfile>,
@@ -57,7 +64,9 @@ impl Builder {
 
     /// Ops-oriented defaults: standard budget + [`FailPolicy::ops`].
     pub fn ops() -> Self {
-        Self::new().fail_policy(FailPolicy::ops()).budget(Budget::ops())
+        Self::new()
+            .fail_policy(FailPolicy::ops())
+            .budget(Budget::ops())
     }
 
     /// Load a built-in cover preset (`usb-utility`, `text-editor`, …).
@@ -206,11 +215,12 @@ impl Builder {
             }
         }
 
-        if targeting_windows && fail.require_resources_on_windows && enable_resources && !resources_embedded
+        if targeting_windows
+            && fail.require_resources_on_windows
+            && enable_resources
+            && !resources_embedded
         {
-            return Err(EmitError::Msg(
-                "fail policy require_resources_on_windows: resources were not embedded".into(),
-            ));
+            return Err(EmitError::ResourcesRequired);
         }
 
         match plan.cover.subsystem {
@@ -234,13 +244,8 @@ impl Builder {
 
         let report_path = gen_dir.join("report.json");
         let report_json = serde_json::to_string_pretty(&report)
-            .map_err(|e| EmitError::Msg(format!("serialize report: {e}")))?;
+            .map_err(|e| EmitError::Serialize(e.to_string()))?;
         fs::write(&report_path, report_json).map_err(|e| EmitError::Io(report_path.clone(), e))?;
-
-        for w in &warnings {
-            // Soft notes stay in report.json; only policy-driven items use cargo:warning above.
-            let _ = w;
-        }
 
         // Always surface non-subsystem warnings that are actionable (missing icon, host OS).
         for w in &report.warnings {
@@ -258,6 +263,7 @@ fn resolve_cover(
     cover_path: Option<&PathBuf>,
     preset_name: Option<&str>,
 ) -> Result<CoverProfile, EmitError> {
+    // Priority: explicit cover > preset > cover file (documented on Builder).
     if let Some(cover) = cover {
         cover.validate().map_err(EmitError::Core)?;
         return Ok(cover);
@@ -275,17 +281,16 @@ fn load_corpus(
 ) -> Result<Option<Corpus>, EmitError> {
     let Some(path) = corpus_path else {
         if fail.require_corpus {
-            return Err(EmitError::Msg(
-                "fail policy require_corpus: no corpus path configured".into(),
-            ));
+            return Err(EmitError::Core(binary_filler_core::Error::RequireCorpus(
+                "no corpus path configured".into(),
+            )));
         }
         return Ok(None);
     };
     if !path.exists() {
         if fail.require_corpus {
-            return Err(EmitError::Msg(format!(
-                "fail policy require_corpus: corpus path does not exist: {}",
-                path.display()
+            return Err(EmitError::Core(binary_filler_core::Error::RequireCorpus(
+                format!("corpus path does not exist: {}", path.display()),
             )));
         }
         println!(
@@ -326,8 +331,11 @@ pub enum EmitError {
     #[error("resource compile failed: {0}")]
     Resource(String),
 
-    #[error("{0}")]
-    Msg(String),
+    #[error("fail policy require_resources_on_windows: resources were not embedded")]
+    ResourcesRequired,
+
+    #[error("failed to serialize emit report: {0}")]
+    Serialize(String),
 }
 
 #[cfg(test)]
@@ -386,5 +394,22 @@ subsystem = "console"
             err.to_string().contains("require_corpus") || err.to_string().contains("corpus"),
             "{err}"
         );
+    }
+
+    #[test]
+    fn cover_priority_prefers_explicit_over_preset() {
+        let dir = tempfile::tempdir().unwrap();
+        let mut cover = binary_filler_core::cover_preset("usb-utility").unwrap();
+        cover.name = "explicit".into();
+        let report = Builder::new()
+            .cover(cover)
+            .cover_preset("text-editor")
+            .out_dir(dir.path().join("out"))
+            .budget(Budget::standard().with_max_blob_bytes(1024))
+            .enable_import_anchors(false)
+            .emit()
+            .unwrap();
+        assert_eq!(report.features.cover_name, "explicit");
+        assert!(!report.features.blob_sources.is_empty());
     }
 }

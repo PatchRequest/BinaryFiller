@@ -5,6 +5,7 @@ open-source Windows goodware.
 
 ```text
 corpus/
+  index.json               # chunk metadata cache (sha256, entropy, sizes)
   bundled/                 # redistributable upstream PEs (~40 MB)
     THIRD_PARTY_NOTICES.md
     manifest.toml
@@ -14,6 +15,9 @@ corpus/
     <id>/chunks/*.bin
   sources/                 # optional operator-local EXEs (gitignored)
 ```
+
+`index.json` is rewritten by `ingest` and `corpus reindex`. Build-time loads use it when
+chunk sizes still match disk (fast path); otherwise components/ is rescanned.
 
 ## Out of the box
 

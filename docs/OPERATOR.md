@@ -60,7 +60,7 @@ Custom cover: TOML file + `.cover_file("covers/op.toml")`.
 | API | Blob budget | Use |
 |-----|-------------|-----|
 | `Budget::conservative()` | 12 KiB | size-sensitive delivery |
-| `Budget::standard()` / `ops()` | 32 KiB | default ops |
+| `Budget::default()` / `standard()` / `ops()` | 32 KiB | default ops |
 | `Budget::aggressive()` | 128 KiB | heavier static pollution |
 
 Always entropy-capped (default ~6.0 bits/byte) so filler does not look packed.
@@ -87,7 +87,13 @@ The repo already ships:
 ```bash
 cargo run -p binary-filler-cli -- corpus list -c corpus
 # 10 components, hundreds of KB of fill material
+
+# optional: rewrite index.json (also auto-written on ingest / first load)
+cargo run -p binary-filler-cli -- corpus reindex -c corpus
 ```
+
+Build scripts load `corpus/index.json` when present and consistent (size check per chunk),
+avoiding a full re-hash of every blob on each compile. Stale indexes are rescanned automatically.
 
 `Builder::ops().corpus_from_env_or(<workspace>/corpus)` just works after clone.
 
@@ -149,8 +155,8 @@ cargo run -p binary-filler-cli -- verify -p my-agent.exe --require-cert
 ./scripts/smoke-windows.sh
 
 # remote Windows runtime + Defender (needs SSH env)
-export BF_SSH_HOST=daniel@desktop-r9q963g.tail5a21e7.ts.net
-export BF_SSH_PASS='...'   # or use SSH keys; never commit secrets
+export BF_SSH_HOST=user@windows-host   # e.g. user@host.tailnet.ts.net
+# prefer SSH keys; BF_SSH_PASS only if you must — never commit secrets
 ./scripts/smoke-remote-windows.sh
 ```
 

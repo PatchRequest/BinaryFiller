@@ -11,9 +11,9 @@ use std::process::Command;
 use std::time::{Duration, Instant};
 
 use binary_filler_core::shannon_entropy;
+use object::LittleEndian as LE;
 use object::pe::{IMAGE_DIRECTORY_ENTRY_RESOURCE, IMAGE_SUBSYSTEM_WINDOWS_GUI};
 use object::read::pe::{PeFile, PeFile64};
-use object::LittleEndian as LE;
 use object::{Object, ObjectSection};
 
 const TARGET: &str = "x86_64-pc-windows-gnu";
@@ -186,6 +186,23 @@ fn assert_pe_filled(root: &Path, profile: Profile, exe: &Path) {
     assert!(
         report["features"]["blob_count"].as_u64().unwrap() >= 1,
         "{}",
+        profile.name
+    );
+    let sources = report["features"]["blob_sources"]
+        .as_array()
+        .expect("blob_sources array");
+    assert_eq!(
+        sources.len() as u64,
+        report["features"]["blob_count"].as_u64().unwrap(),
+        "{} blob_sources length mismatch",
+        profile.name
+    );
+    assert!(
+        sources.iter().all(|s| {
+            s.as_str()
+                .is_some_and(|p| p.contains("components/") || p.starts_with("synthetic:"))
+        }),
+        "{} unexpected blob_sources: {sources:?}",
         profile.name
     );
 

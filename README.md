@@ -90,6 +90,9 @@ docs/OPERATOR.md          # full operator guide
 # List shipped corpus
 cargo run -p binary-filler-cli -- corpus list -c corpus
 
+# Rebuild corpus/index.json after manual chunk edits
+cargo run -p binary-filler-cli -- corpus reindex -c corpus
+
 # Presets
 cargo run -p binary-filler-cli -- preset list
 cargo run -p binary-filler-cli -- preset show usb-utility
@@ -138,7 +141,7 @@ Verified on Windows: VERSIONINFO, GUI subsystem, import anchors, corpus blobs in
 | Budget | Blob budget | Use |
 |--------|-------------|-----|
 | `Budget::conservative()` | 12 KiB | size-sensitive delivery |
-| `Budget::standard()` / `ops()` | 32 KiB | default |
+| `Budget::default()` / `standard()` / `ops()` | 32 KiB | default |
 | `Budget::aggressive()` | 128 KiB | heavier static pollution |
 
 | Policy | Missing corpus | Synthetic blobs |

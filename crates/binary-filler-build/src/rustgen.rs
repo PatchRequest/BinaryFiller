@@ -46,9 +46,7 @@ pub fn render_generated(
             out.push_str(&format!(
                 "    black_box(core::ptr::addr_of!(BINARY_FILLER_BLOB_{idx}));\n"
             ));
-            out.push_str(&format!(
-                "    black_box(BINARY_FILLER_BLOB_{idx}.len());\n"
-            ));
+            out.push_str(&format!("    black_box(BINARY_FILLER_BLOB_{idx}.len());\n"));
             // Force a data dependency so LTO cannot prove the blob is unread.
             out.push_str(&format!(
                 "    black_box(unsafe {{ core::ptr::read_volatile(BINARY_FILLER_BLOB_{idx}.as_ptr()) }});\n"
